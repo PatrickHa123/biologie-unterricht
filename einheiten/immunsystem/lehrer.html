@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lehrerversion · Operation Abwehr · Immunsystem Jg. 10</title>
+<style>
+:root{--navy:#101a3a;--ink:#1b2236;--grau:#5b6478;--bg:#f5f6fb;--rand:#e2e5f0;--gelb:#ffc23d;--gruen:#2fb36d;--koralle:#ff5d5d;--violett:#7b5cff;--blau:#2f7bff;
+--m1:#ff7a45;--m2:#7b5cff;--m3:#2f7bff;--m4:#12b5a5;--m5:#f2a20c;--m6:#ff4fa3;--m7:#2fb36d}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+header{background:linear-gradient(160deg,var(--navy),#2b2470);color:#fff;padding:2.2rem 1.2rem}
+header .i,main{max-width:1050px;margin:0 auto}
+header h1{margin:.3rem 0;font-size:2rem}
+.chip{display:inline-block;background:var(--gelb);color:#3a2500;font-weight:800;border-radius:999px;padding:.15rem .7rem;font-size:.8rem}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--rand);z-index:5}
+nav .i{max-width:1050px;margin:0 auto;display:flex;gap:.3rem;overflow-x:auto;padding:.45rem 1rem}
+nav a{flex:none;text-decoration:none;color:var(--ink);font-weight:700;font-size:.88rem;padding:.3rem .65rem;border-radius:999px;background:var(--bg)}
+main{padding:1rem 1rem 4rem}
+h2{margin:2.2rem 0 .7rem;padding-bottom:.3rem;border-bottom:3px solid var(--rand)}
+h3{margin:1.4rem 0 .4rem}
+.karte{background:#fff;border:1px solid var(--rand);border-radius:16px;padding:1rem 1.2rem;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:#fff}
+th,td{border:1px solid var(--rand);padding:.45rem .55rem;text-align:left;vertical-align:top}
+th{background:#eef0f8}
+.m{border-left:8px solid;border-radius:14px;background:#fff;padding:1rem 1.2rem;margin:1.2rem 0;border-top:1px solid var(--rand);border-right:1px solid var(--rand);border-bottom:1px solid var(--rand)}
+.m h3{margin-top:0}
+.tag{display:inline-block;font-size:.78rem;font-weight:800;border-radius:6px;padding:.05rem .45rem;margin:.1rem;background:var(--bg)}
+.hinweis{background:#fff8e6;border-left:5px solid var(--gelb);padding:.7rem 1rem;border-radius:10px;margin:.8rem 0}
+.warn{background:#fff0f0;border-left:5px solid var(--koralle);padding:.7rem 1rem;border-radius:10px;margin:.8rem 0}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:760px){.zwei{grid-template-columns:1fr}}
+.quelle{font-size:.85rem;color:var(--grau)}
+blockquote{margin:.6rem 0;padding:.7rem 1rem;background:#f3efff;border-radius:10px;border-left:5px solid var(--violett);font-style:italic}
+@media print{nav{display:none}.m,.karte{break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+<header><div class="i">
+  <span class="chip">LEHRERVERSION – nicht für Schüler:innen</span>
+  <h1>Operation Abwehr – Das Immunsystem</h1>
+  <div>Biologie · Jahrgang 10 · 7 Unterrichtsstunden à 45 Min. · Basis: Bioskop 3, Kap. 4.5, 4.6, 4.9, 4.10 · <a href="index.html" style="color:var(--gelb)">→ Schülerseite</a></div>
+</div></header>
+<nav><div class="i">
+  <a href="#ueberblick">Überblick</a><a href="#kompetenzen">KLP-Bezug</a><a href="#fehl">Fehlvorstellungen</a><a href="#verlauf">Verlaufspläne</a><a href="#ewh">Erwartungshorizonte</a><a href="#ki">KI-Beispiel</a><a href="#somi">Leistungsbewertung</a><a href="#hinweise">Hinweise</a><a href="#quellen">Quellen</a>
+</div></nav>
+<main>
+
+<h2 id="ueberblick">1 Überblick und didaktische Idee</h2>
+<div class="karte">
+  <p><b>Kontext:</b> Ein durchgehender Lebensweltbezug – <i>„Ein Jahr im Leben von Mia (16)“</i> – verbindet alle Missionen: Schürfwunde (Entzündung) → Grippe (spezifische Abwehr) → zweiter Kontakt (Gedächtnis) → Impfpass-Check (Impfung, Herdenschutz) → Heuschnupfen (Allergie) → Onkel auf der Warteliste (Transplantation). So wird das Immunsystem als <b>vernetztes System</b> erfahrbar, und jede Stunde beginnt problemorientiert mit einem Phänomen.</p>
+  <p><b>Bewusste Auswahl:</b> Das Buch dient als Material- und Textbasis; die Webseite reduziert und ergänzt (Animationen statt Abbildungs-Lesen, Spiele zur Übung, Simulation statt Tabelle). Nicht alle Buchmaterialien werden genutzt: Die Schluckimpfung (S. 71) und die Milchallergie (S. 81) fließen nur exemplarisch ein; die Nieren-Tabelle (S. 83) wird für die Datenauswertung genutzt.</p>
+  <p><b>Gamification:</b> XP-Punkte, Abzeichen pro Mission, Mini-Spiele (Barrieren-Zuordnung, Passt-Spiel, Reihenfolge, Allergie-Sortierung, Argumente-Sortierung). Der Fortschritt wird nur im Browser des Geräts gespeichert (localStorage), es werden <b>keine Daten übertragen</b>. Auf geteilten iPads ggf. am Ende „Fortschritt zurücksetzen“ (Mission 7).</p>
+  <table>
+    <tr><th>Std.</th><th>Mission</th><th>Kern</th><th>Bioskop</th><th>Schwerpunkt-Kompetenz</th></tr>
+    <tr><td>1</td><td>🔥 Die erste Verteidigungslinie</td><td>Check-in, Barrieren, Entzündung, Phagocytose, Modellversuch Händewaschen</td><td>S. 64–65</td><td>UF, E (Hypothese, Modellkritik)</td></tr>
+    <tr><td>2</td><td>🔑 Schlüssel &amp; Schloss</td><td>Antigen, B-Zelle, Plasmazelle, Antikörper, humorale Antwort</td><td>S. 66–67</td><td>UF, E (Modellkritik)</td></tr>
+    <tr><td>3</td><td>🧠 Das Zellteam</td><td>T-Helfer, Killer-T, Gedächtniszellen, Gesamtüberblick, Gruppenpuzzle</td><td>S. 66–67</td><td>UF, K</td></tr>
+    <tr><td>4</td><td>💉 Impfen</td><td>Jenner, aktive/passive Immunisierung, Diagramm, Herdenschutz-Simulation, KI-Check</td><td>S. 68–71</td><td>E (Diagramm, Simulation), K (Quellen/KI), B</td></tr>
+    <tr><td>5</td><td>🌼 Fehlalarm: Allergie</td><td>Sensibilisierung, IgE, Mastzellen, Histamin; Abgrenzung Unverträglichkeit</td><td>S. 80–81</td><td>UF, E (Vergleich)</td></tr>
+    <tr><td>6</td><td>⚖️ Ein fremdes Organ</td><td>Abstoßung, Immunsuppression, Daten, Widerspruchs- vs. Entscheidungslösung</td><td>S. 82–83</td><td>B (Bewertung), K</td></tr>
+    <tr><td>7</td><td>🏆 Check-out</td><td>Abschlusstest, Check-in-Vergleich, Kompetenzraster, Concept-Map</td><td>–</td><td>Metakognition</td></tr>
+  </table>
+  <div class="hinweis"><b>Nur 6 Stunden?</b> Mission 3 und 2 zu einer Doppelstunde zusammenziehen (Steckbriefe als Hausaufgabe), oder den Abschlusstest (Mission 7) als Hausaufgabe bearbeiten lassen und nur Check-in-Vergleich und Reflexion im Unterricht durchführen (20 Min.).</div>
+</div>
+
+<h2 id="kompetenzen">2 Bezug zum Kernlehrplan</h2>
+<div class="karte">
+  <p><b>Inhaltsfeld:</b> Mensch und Gesundheit – Schwerpunkt Immunbiologie (KLP Biologie Sek. I, G9 NRW). <i>Bitte mit der Zuordnung im schulinternen Lehrplan der KAS abgleichen.</i></p>
+  <p><b>Basiskonzepte:</b> <span class="tag">System</span> (Zusammenspiel der Abwehrzellen, Herdenschutz) <span class="tag">Struktur und Funktion</span> (Schlüssel-Schloss-Prinzip, Antigene/Gewebemerkmale) <span class="tag">Entwicklung</span> (Gedächtnisbildung, Sensibilisierung)</p>
+  <table>
+    <tr><th>Bereich</th><th>Konkretisierte Kompetenzerwartung (angelehnt an KLP)</th><th>Mission</th></tr>
+    <tr><td>Umgang mit Fachwissen</td><td>die unspezifische und die spezifische Immunreaktion beschreiben und ihr Zusammenwirken erklären</td><td>1–3</td></tr>
+    <tr><td>Umgang mit Fachwissen</td><td>aktive und passive Immunisierung unterscheiden; Allergien und Abstoßungsreaktionen als Immunreaktionen erklären</td><td>4–6</td></tr>
+    <tr><td>Erkenntnisgewinnung</td><td>Hypothesen formulieren und mit einem Modellversuch überprüfen; Modelle (Schlüssel-Schloss, Simulation) hinsichtlich Aussagekraft und Grenzen beurteilen</td><td>1, 2, 4</td></tr>
+    <tr><td>Erkenntnisgewinnung</td><td>Diagramme zur Antikörperkonzentration auswerten; mit einer Simulation systematisch Variablen verändern</td><td>4</td></tr>
+    <tr><td>Kommunikation</td><td>Fachinformationen aus Buch, Webseiten und KI-Antworten kriterienorientiert prüfen und adressatengerecht darstellen (Antwort an Jonas, Gruppenpuzzle)</td><td>3, 4</td></tr>
+    <tr><td>Bewertung</td><td>Handlungsoptionen (Impfen; Regelungen zur Organspende) unter Abwägung von Werten (Selbstbestimmung, Solidarität, Gesundheit) begründet beurteilen</td><td>4, 6</td></tr>
+  </table>
+  <p><b>Operatoren</b> sind auf der Schülerseite farbig hervorgehoben (beschreiben, erklären, erläutern, vergleichen, auswerten, beurteilen, bewerten, Stellung nehmen, untersuchen).</p>
+</div>
+
+<h2 id="fehl">3 Schülervorstellungen (Check-in) und Konzeptwechsel</h2>
+<table>
+  <tr><th>Aussage im Check-in</th><th>fachlich</th><th>Typische Vorstellung dahinter</th><th>aufgegriffen in</th></tr>
+  <tr><td>Fieber zeigt, dass das Immunsystem versagt.</td><td>falsch</td><td>Symptome = Krankheit selbst; Abwehr „unsichtbar“</td><td>M1 (Entzündungszeichen als Nutzen)</td></tr>
+  <tr><td>Antikörper sind Zellen, die Erreger auffressen.</td><td>falsch</td><td>Vermischung Antikörper/Fresszellen; „Körper“ = Lebewesen</td><td>M2 (Animation, Steckbrief Plasmazelle)</td></tr>
+  <tr><td>Eiter besteht v. a. aus abgestorbenen Abwehrzellen.</td><td>richtig</td><td>Eiter = „Dreck“ oder Erreger</td><td>M1</td></tr>
+  <tr><td>Nach einer Impfung ist man sofort geschützt.</td><td>falsch</td><td>Impfung wirkt wie Medikament</td><td>M4 (Diagramm)</td></tr>
+  <tr><td>Wer sich impfen lässt, schützt auch andere.</td><td>richtig</td><td>Impfen als reine Privatsache</td><td>M4 (Simulation)</td></tr>
+  <tr><td>Allergiker haben ein schwaches Immunsystem.</td><td>falsch</td><td>„Viel Reaktion = schwach“</td><td>M5</td></tr>
+  <tr><td>Lactoseintoleranz ist eine Allergie.</td><td>falsch</td><td>jede Unverträglichkeit = Allergie</td><td>M5 (Sortierspiel)</td></tr>
+  <tr><td>Das Immunsystem erkennt ein Spenderorgan als fremd.</td><td>richtig</td><td>Organ = „Ersatzteil“</td><td>M6</td></tr>
+</table>
+<div class="hinweis">Tipp: In der ersten Stunde per Handzeichen/Abstimmung kurz die Verteilung zu 2–3 Aussagen erheben und an der Tafel festhalten – in Mission 7 dieselben Aussagen erneut abfragen. Der Vergleich (vorher/jetzt/fachlich) ist auch auf der Seite automatisch sichtbar.</div>
+
+<h2 id="verlauf">4 Stundenverlaufspläne</h2>
+
+<div class="m" style="border-left-color:var(--m1)">
+<h3>Mission 1 · Die erste Verteidigungslinie</h3>
+<p><b>Ziel:</b> Die SuS erklären die Entzündungszeichen als Folge der unspezifischen Abwehr und beurteilen einen Modellversuch.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>8'</td><td>Einstieg / Check-in</td><td>Transparenz: Missionskarte zeigen; Check-in (8 Aussagen) auf dem Tablet</td><td>EA</td><td>Startseite</td></tr>
+<tr><td>5'</td><td>Problem</td><td>Fall Mia: Schürfwunde. Vermutungen zu den 4 Anzeichen sammeln (A1)</td><td>UG</td><td>M1 Fall</td></tr>
+<tr><td>7'</td><td>Erarbeitung I</td><td>Barrieren: Buch S. 64 „Haut als Schutzbarriere“ + Mini-Spiel</td><td>PA</td><td>Buch, Spiel</td></tr>
+<tr><td>12'</td><td>Erarbeitung II</td><td>Animation Entzündung, Tabelle Anzeichen | Ursache | Nutzen (A2) mit gestuften Hilfen</td><td>EA/PA</td><td>Animation, S. 65</td></tr>
+<tr><td>10'</td><td>Erkenntnisgewinnung</td><td>Modellversuch Glitzer-Händewaschen (Demo mit 2–3 SuS), Modellkritik (A3)</td><td>Demo/UG</td><td>Glitzer, Seife</td></tr>
+<tr><td>3'</td><td>Sicherung</td><td>Merksatz ins Heft, Vermutung aus A1 überprüfen</td><td>EA</td><td>Heft</td></tr></table>
+</div>
+
+<div class="m" style="border-left-color:var(--m2)">
+<h3>Mission 2 · Schlüssel &amp; Schloss</h3>
+<p><b>Ziel:</b> Die SuS beschreiben die humorale Immunantwort und beurteilen das Schlüssel-Schloss-Modell.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>5'</td><td>Einstieg</td><td>Fall Mia (Grippe): „Warum eine Woche?“ – Rückbezug: Was leisten Fresszellen nicht?</td><td>UG</td><td>M2 Fall</td></tr>
+<tr><td>7'</td><td>Erarbeitung I</td><td>Antigen-Begriff; Passt-Spiel (5 Runden)</td><td>EA</td><td>Spiel</td></tr>
+<tr><td>18'</td><td>Erarbeitung II</td><td>Animation humorale Antwort + Buch S. 66–67 → Flussdiagramm (A1)</td><td>PA</td><td>Animation, Buch</td></tr>
+<tr><td>8'</td><td>Vertiefung</td><td>A2 (Warum eine Woche?) und A3 Modellkritik; Fast-Fertige: Profi-Aufgabe aus M3 vorziehen</td><td>PA/UG</td><td></td></tr>
+<tr><td>7'</td><td>Sicherung</td><td>Flussdiagramm einer Gruppe besprechen (Dokumentenkamera), Merksatz</td><td>UG</td><td>Heft</td></tr></table>
+</div>
+
+<div class="m" style="border-left-color:var(--m3)">
+<h3>Mission 3 · Das Zellteam</h3>
+<p><b>Ziel:</b> Die SuS erklären die zelluläre Immunantwort und die Gedächtnisbildung und stellen den Gesamtablauf dar.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>5'</td><td>Einstieg</td><td>Fall: Mia bleibt beim 2. Kontakt gesund – Hypothesen</td><td>UG</td><td></td></tr>
+<tr><td>7'</td><td>Erarbeitung I</td><td>Animation zelluläre Antwort</td><td>EA</td><td>Animation</td></tr>
+<tr><td>15'</td><td>Gruppenpuzzle</td><td>4er-Gruppen; je 1–2 Zell-Steckbriefe pro Person; Vorstellung in der Ich-Form („Ich bin die T-Helferzelle …“)</td><td>GA</td><td>Flipkarten</td></tr>
+<tr><td>8'</td><td>Übung</td><td>Reihenfolge-Spiel; A1 Vergleichstabelle, A2 Gedächtniszellen</td><td>PA</td><td>Spiel</td></tr>
+<tr><td>10'</td><td>Sicherung / Überblick</td><td>Gemeinsame Übersicht „Immunsystem“ an der Tafel (siehe Heftkasten); A3 Profi (HIV) als Differenzierung</td><td>UG</td><td>Tafel, Heft</td></tr></table>
+<div class="hinweis">Optional: Rollenspiel – SuS stellen die Zellen mit Namensschildern im Raum nach, ein „Virus“ läuft ein. Dauert ca. 10 Min. extra, bleibt aber erfahrungsgemäß gut hängen.</div>
+</div>
+
+<div class="m" style="border-left-color:var(--m4)">
+<h3>Mission 4 · Impfen – Training ohne Risiko</h3>
+<p><b>Ziel:</b> Die SuS unterscheiden aktive und passive Immunisierung, werten ein Diagramm aus, erklären Herdenschutz und prüfen Gesundheitsinformationen.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>5'</td><td>Einstieg</td><td>Fall Impfpass, Jonas' Aussage als Provokation (Meinungsbild ohne Wertung)</td><td>UG</td><td></td></tr>
+<tr><td>7'</td><td>Erarbeitung I</td><td>Jenner (S. 68–69), A1; A2 (Ethik) kurz im Plenum</td><td>EA/UG</td><td>Buch</td></tr>
+<tr><td>10'</td><td>Erarbeitung II</td><td>Interaktives Diagramm, A3 mit Satzbausteinen; passive Impfung S. 71</td><td>PA</td><td>Diagramm</td></tr>
+<tr><td>12'</td><td>Erkenntnisgewinnung</td><td>Simulation Herdenschutz: systematische Variation (A4), Ergebnistabelle; Modellkritik (A5)</td><td>PA</td><td>Simulation</td></tr>
+<tr><td>8'</td><td>Medien-/KI-Kompetenz</td><td>KI-Check mit Quellen-Ampel (Beispielantwort unten)</td><td>PA</td><td>KI-Kasten</td></tr>
+<tr><td>3'</td><td>Sicherung / HA</td><td>Merksatz; A6 (Antwort an Jonas) als Hausaufgabe</td><td>EA</td><td>Heft</td></tr></table>
+<div class="warn"><b>Sensibel moderieren:</b> Impfen kann in Familien kontrovers sein. Kein Bloßstellen einzelner Positionen; fachlich klar bleiben (Daten, Mechanismus), die Entscheidung über eigene Impfungen aber nicht im Plenum abfragen. Impfpässe nicht einsammeln oder vergleichen.</div>
+</div>
+
+<div class="m" style="border-left-color:var(--m5)">
+<h3>Mission 5 · Fehlalarm: Allergie</h3>
+<p><b>Ziel:</b> Die SuS erklären die allergische Reaktion und grenzen sie von Unverträglichkeiten und Infektionen ab.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>5'</td><td>Einstieg</td><td>Fall Heuschnupfen; Hypothese „Warum im ersten Jahr nichts?“ (A1)</td><td>UG</td><td></td></tr>
+<tr><td>15'</td><td>Erarbeitung</td><td>Animation in zwei Phasen + S. 81 → A2, Hypothese prüfen</td><td>EA/PA</td><td>Animation, Buch</td></tr>
+<tr><td>8'</td><td>Vernetzung</td><td>A3 Vergleich mit Entzündung (M1)</td><td>PA</td><td></td></tr>
+<tr><td>10'</td><td>Übung</td><td>Sortierspiel Allergie/Unverträglichkeit/Infektion; Lactoseintoleranz S. 81</td><td>PA</td><td>Spiel</td></tr>
+<tr><td>7'</td><td>Sicherung</td><td>A4 (Leas Satz), Merksatz</td><td>UG</td><td>Heft</td></tr></table>
+<div class="hinweis">Allergiker:innen in der Klasse können freiwillig berichten (z. B. Notfallset bei Erdnussallergie) – nicht dazu auffordern. Keine Selbstdiagnosen fördern.</div>
+</div>
+
+<div class="m" style="border-left-color:var(--m6)">
+<h3>Mission 6 · Ein fremdes Organ</h3>
+<p><b>Ziel:</b> Die SuS erklären die Abstoßungsreaktion und beurteilen Regelungen zur Organspende begründet.</p>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>5'</td><td>Einstieg</td><td>Fall Onkel Deniz; Positionslinie „vorher“ (auch als Raumlinie möglich)</td><td>EA/Plenum</td><td>Slider</td></tr>
+<tr><td>12'</td><td>Erarbeitung</td><td>S. 82, A1 Abstoßung, A2 Immunsuppressiva (Vernetzung mit Herdenschutz)</td><td>PA</td><td>Buch</td></tr>
+<tr><td>5'</td><td>Daten</td><td>Zahlen DSO + Nieren-Tabelle S. 83 (A3)</td><td>UG</td><td></td></tr>
+<tr><td>15'</td><td>Bewertung</td><td>Regelungen vergleichen, Argumente sortieren, A4 nach Bewertungsschema</td><td>PA/GA</td><td>Spiel</td></tr>
+<tr><td>8'</td><td>Abschluss</td><td>Positionslinie „nachher“, 2–3 Begründungen im Plenum; Hinweis Organspende-Register ab 16</td><td>Plenum</td><td></td></tr></table>
+<div class="warn"><b>Sensibel moderieren:</b> Möglicherweise sind Betroffene (Dialyse, Transplantation, verstorbene Angehörige) in der Lerngruppe. Keine persönliche Entscheidung abfragen; die Positionslinie bezieht sich auf die <i>gesellschaftliche</i> Regelung. Neutral bleiben – beide Positionen sind legitim. <b>Aktualität prüfen:</b> Stand der Gesetzgebung vor der Stunde kurz nachsehen (Stand bei Erstellung: Nov. 2026, 1. Lesung am 24.09.2026, Anhörung im Nov. 2026, noch keine Abstimmung).</div>
+</div>
+
+<div class="m" style="border-left-color:var(--m7)">
+<h3>Mission 7 · Check-out</h3>
+<table><tr><th>Zeit</th><th>Phase</th><th>Inhalt / Handlung</th><th>Sozialform</th><th>Material</th></tr>
+<tr><td>15'</td><td>Abschlusstest</td><td>12 Fragen mit sofortigem Feedback und Rücksprung zur Mission</td><td>EA</td><td>Quiz</td></tr>
+<tr><td>8'</td><td>Konzeptwechsel</td><td>Check-in-Aussagen erneut, Vergleich vorher/jetzt; Plenum: „Welche Vorstellung hat sich bei euch verändert?“</td><td>EA/UG</td><td></td></tr>
+<tr><td>7'</td><td>Selbsteinschätzung</td><td>Kompetenzraster; bei 😕 gezielt zurück zur Mission</td><td>EA</td><td></td></tr>
+<tr><td>15'</td><td>Reflexion / Übung</td><td>Concept-Map mit 12 Glossarbegriffen (in PA vergleichen); Reflexionsfragen im Heft</td><td>EA/PA</td><td>Heft</td></tr></table>
+</div>
+
+<h2 id="ewh">5 Erwartungshorizonte zu offenen Aufgaben</h2>
+<p>Die geschlossenen Aufgaben haben Lösungen direkt auf der Schülerseite (aufklappbar). Hier die Erwartungen zu den offenen Aufgaben:</p>
+<table>
+<tr><th>Aufgabe</th><th>Erwartete Leistung</th></tr>
+<tr><td>M1 A1 Vermutung</td><td>Jede begründete Vermutung ist zulässig (z. B. „Mehr Blut fließt hin“). Wichtig ist die Überprüfung am Ende der Stunde.</td></tr>
+<tr><td>M1 A3 Modellkritik</td><td>mind. eine Stärke (Übertragung durch Kontakt, Wirkung von Seife/Zeit sichtbar) und zwei Grenzen (Sichtbarkeit, keine Vermehrung, andere Haftung, Seife zerstört Fetthüllen von Erregern zusätzlich).</td></tr>
+<tr><td>M4 A2 Jenner bewerten</td><td>Nennung der Werte: Wohl des Kindes/Einwilligung vs. Nutzen für viele. Heute: Einwilligung der Sorgeberechtigten, Ethikkommission, Vorstudien – direkte Infektion eines Kindes mit Pocken wäre nicht zulässig. Würdigung: historischer Kontext, enormer Nutzen (Pocken gelten heute als ausgerottet).</td></tr>
+<tr><td>M4 A4 Simulation</td><td>Ergebnistabelle mit Mittelwerten aus drei Durchläufen; Erkenntnis: Schwelle bei Masern sehr hoch (ca. 95 %), weil Masern extrem ansteckend sind; Babys profitieren erst bei hoher Quote.</td></tr>
+<tr><td>M4 A6 Antwort an Jonas</td><td>Fachlich: beide Wege erzeugen Gedächtniszellen; die „natürliche“ Immunität erfordert eine Erkrankung mit Komplikationsrisiko (z. B. Gehirnentzündung bei ca. 1 von 1.000 Masernfällen); Impfung erzeugt Schutz ohne Krankheit; Herdenschutz schützt Nicht-Impfbare. Sachlicher, respektvoller Ton; eigenes Fazit.</td></tr>
+<tr><td>M5 A1 Hypothese</td><td>z. B. „Der Körper musste erst lernen, auf die Pollen zu reagieren“ → wird durch die Sensibilisierung bestätigt.</td></tr>
+<tr><td>M6 A3 Daten</td><td>Deutlich mehr Menschen warten (über 8.000) als Organe transplantiert werden (ca. 3.250/Jahr, teils aus dem Ausland) → lange Wartezeiten, Menschen sterben auf der Warteliste; bei Nieren Dialyse als Überbrückung.</td></tr>
+<tr><td>M6 A4 Urteil</td><td><b>Anforderungsbereich III.</b> Sachlage mit Daten, mindestens zwei Werte benannt und gegeneinander abgewogen (Selbstbestimmung/informierte Zustimmung ↔ Solidarität/Lebensrettung/Entlastung Angehöriger), Handlungsoptionen mit Folgen, eigenes begründetes Urteil. Bewertet wird die Qualität der Begründung, <b>nicht die Position</b>.</td></tr>
+</table>
+
+<h2 id="ki">6 Beispiel-KI-Antwort für den KI-Check (Mission 4)</h2>
+<p>Falls keine Chatbot-Nutzung erlaubt ist, diese (fiktive, bewusst fehlerhafte) Antwort zeigen:</p>
+<blockquote>„Natürliche Immunität ist in vielen Fällen stärker und hält länger als die Immunität durch eine Impfung. Laut einer großen Studie der Universität Heidelberg von 2019 sind Menschen nach einer überstandenen Masernerkrankung zu 100 % geschützt. Viele Ärzte empfehlen daher sogenannte Masernpartys, damit Kinder die Krankheit früh durchmachen. Masern sind für gesunde Kinder in der Regel harmlos.“</blockquote>
+<table>
+<tr><th>Ampel</th><th>Was SuS finden sollten</th></tr>
+<tr><td>🔴 Quelle</td><td>Die „Studie der Universität Heidelberg“ ist nicht überprüfbar (typische erfundene Quelle).</td></tr>
+<tr><td>🔴 Weglassen</td><td>Das Risiko der Krankheit wird verschwiegen (Gehirnentzündung, Todesfälle); „harmlos“ ist falsch.</td></tr>
+<tr><td>🔴 Falsch</td><td>„Viele Ärzte empfehlen Masernpartys“ – widerspricht den Empfehlungen der STIKO.</td></tr>
+<tr><td>🟡 Teilweise richtig</td><td>Nach überstandenen Masern besteht meist lebenslange Immunität – das gilt aber auch für die zweifache Impfung, ohne Krankheitsrisiko.</td></tr>
+</table>
+
+<h2 id="somi">7 Leistungsbewertung – Sonstige Mitarbeit</h2>
+<p>In Jg. 10 keine Klausur; Bewertung über die Sonstige Mitarbeit. Kriterien transparent zu Beginn der Reihe nennen.</p>
+<table>
+<tr><th>Bereich</th><th>Grundlage</th><th>Kriterien</th></tr>
+<tr><td>Mündliche Mitarbeit</td><td>Unterrichtsgespräche, Gruppenpuzzle-Vortrag</td><td>Fachsprache, korrekte Zusammenhänge, Bezug auf Beiträge anderer</td></tr>
+<tr><td>Schriftliche Produkte</td><td>Heft (Tabelle M1, Flussdiagramm M2, Übersicht M3), Antwort an Jonas (M4), Urteil (M6)</td><td>Vollständigkeit, fachliche Richtigkeit, Struktur; beim Urteil Qualität der Begründung</td></tr>
+<tr><td>Erkenntnisgewinnung</td><td>Modellversuch, Simulation (Ergebnistabelle)</td><td>Hypothesenbildung, systematisches Vorgehen, Modellkritik</td></tr>
+<tr><td>Optional: schriftliche Übung</td><td>15–20 Min., z. B. Diagramm auswerten + Ablauf erklären</td><td>Nutzung der Quizfragen/Abschlusstest-Inhalte als Basis</td></tr>
+</table>
+<p class="quelle">Der Online-Abschlusstest dient der Selbstkontrolle und wird nicht benotet (Ergebnisse liegen nur auf dem Schülergerät).</p>
+
+<h2 id="hinweise">8 Vorbereitung, Differenzierung, Technik</h2>
+<div class="zwei">
+<div class="karte"><h3 style="margin-top:0">✅ Vorbereitung</h3><ul>
+<li>M1: Glitzer (biologisch abbaubar) oder Zimt, Seife, Papiertücher; Waschbecken im Raum klären</li>
+<li>M3: optional Namensschilder für Rollenspiel</li>
+<li>M4: Klären, ob Chatbots im Unterricht genutzt werden dürfen (Datenschutz, Altersgrenzen); sonst Beispielantwort oben</li>
+<li>M6: Aktuellen Stand der Gesetzgebung prüfen; ggf. Organspendeausweise (kostenlos über organspende-info.de) mitbringen – freiwillig, keine Ausfüllpflicht</li>
+<li>Tablets: Seite vorab einmal öffnen (Link im Sammel-Repository)</li></ul></div>
+<div class="karte"><h3 style="margin-top:0">🎯 Differenzierung</h3><ul>
+<li><b>Gestufte Hilfen</b> (Hilfe 1, Hilfe 2, Lösung) bei allen Kernaufgaben</li>
+<li><b>Satzbausteine</b> für sprachsensibles Arbeiten (M1, M4, M6), Glossar mit Suche</li>
+<li><b>★★/★★★-Aufgaben</b> zur Vertiefung (Modellkritik, HIV, Ethik)</li>
+<li>Mini-Spiele geben sofortiges Feedback und eignen sich für Schnelle wie für Langsamere</li>
+<li>Kompetenzraster verlinkt bei 😕 direkt zur passenden Mission</li></ul></div>
+</div>
+<div class="karte"><h3 style="margin-top:0">⚙️ Technik</h3>
+<p>Zwei Dateien im Ordner <code>einheiten/immunsystem/</code>: <code>index.html</code> (Schüler) und <code>lehrer.html</code> (diese Seite, mit <code>noindex</code>). Alles ist in einer Datei eingebettet (keine externen Schriften, Skripte oder Bilder – DSGVO-freundlich), funktioniert offline und auf iPads. Links zu externen Seiten öffnen sich in neuem Tab. Animationen respektieren die Systemeinstellung „Bewegung reduzieren“. Hinweis: Die Lehrerversion ist bei öffentlichem Repository grundsätzlich auffindbar, wenn man die Adresse kennt.</p></div>
+
+<h2 id="quellen">9 Quellen (recherchiert Nov. 2026)</h2>
+<ul class="quelle">
+<li>Bioskop 3, Westermann: Kap. 4.5 Die Abwehrmechanismen des Körpers (S. 64–67), 4.6 Immunisierung (S. 68–71), 4.9 Allergien (S. 80–81), 4.10 Organtransplantation (S. 82–83)</li>
+<li>Bundesgesundheitsministerium: Masern (95-%-Ziel, Enzephalitis-Risiko, Masernschutzgesetz seit 1.3.2020) – <a href="https://www.bundesgesundheitsministerium.de/service/begriffe-von-a-z/m/masern.html">bundesgesundheitsministerium.de</a></li>
+<li>DSO: Jahresbericht 2025 (985 Organspender 2025) – <a href="https://dso.de/SiteCollectionDocuments/DSO-Jahresbericht_2025.pdf">dso.de</a></li>
+<li>ZDFheute (2026): 8.202 Menschen auf der aktiven Warteliste (April 2026), 3.256 transplantierte Organe 2025 – <a href="https://www.zdfheute.de/politik/deutschland/organspende-reform-widerspruchsloesung-gesetz-bundestag-100.html">zdfheute.de</a></li>
+<li>Deutscher Bundestag: 1. Lesung Widerspruchslösung am 24.09.2026 – <a href="https://www.bundestag.de/dokumente/textarchiv/2026/kw39-de-transplantationsgesetz-1211264">bundestag.de</a>; Anhörung 05.11.2026 – <a href="https://www.bundestag.de/1231306">hib 900/2026</a></li>
+<li>AOK-Gesundheitspolitik (2026): Bundestag lehnte 2020 die Widerspruchslösung ab; Bundesärztekammer: Widerspruchslösung allein behebt Mangel nicht – <a href="https://www.aok.de/pp/gg/update/widerspruchsloesung-organspende">aok.de</a></li>
+<li>Für SuS: impfen-info.de, organspende-info.de, organspende-register.de, DWD Pollenflug-Gefahrenindex, DAAB</li>
+</ul>
+</main>
+</body>
+</html>

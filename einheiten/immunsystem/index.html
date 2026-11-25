@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operation Abwehr · Das Immunsystem · Biologie Jg. 10</title>
+<meta name="description" content="Digitale Unterrichtsreihe zum Immunsystem für Jahrgang 10 (KAS Köln)">
+<style>
+:root{
+  --navy:#101a3a; --navy2:#1d2b5c; --ink:#1b2236; --grau:#5b6478; --bg:#f5f6fb; --karte:#fff; --rand:#e2e5f0;
+  --koralle:#ff5d5d; --tuerkis:#12b5a5; --gelb:#ffc23d; --violett:#7b5cff; --blau:#2f7bff; --gruen:#2fb36d; --pink:#ff4fa3;
+  --m1:#ff7a45; --m2:#7b5cff; --m3:#2f7bff; --m4:#12b5a5; --m5:#f2a20c; --m6:#ff4fa3; --m7:#2fb36d;
+  --radius:18px; --schatten:0 8px 24px rgba(16,26,58,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+a{color:var(--blau)}
+img,svg{max-width:100%}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gelb);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Kopfleiste */
+.leiste{position:sticky;top:0;z-index:50;background:rgba(16,26,58,.96);backdrop-filter:blur(8px);color:#fff}
+.leiste .innen{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem}
+.logo{font-weight:800;letter-spacing:.02em;white-space:nowrap;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.4rem}
+.tabs{display:flex;gap:.3rem;overflow-x:auto;flex:1;scrollbar-width:none;padding:.15rem 0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;color:#cfd6f5;text-decoration:none;padding:.35rem .7rem;border-radius:999px;font-size:.88rem;font-weight:600;border:1px solid transparent}
+.tabs a.aktiv{background:#fff;color:var(--navy)}
+.tabs a.fertig::after{content:" ✓";color:var(--gruen)}
+.xp{flex:none;background:linear-gradient(135deg,var(--gelb),#ff9d2e);color:#3a2500;font-weight:800;border-radius:999px;padding:.3rem .75rem;font-size:.9rem;border:0}
+
+/* Hero */
+.hero{background:radial-gradient(1200px 500px at 80% -10%,#3b4fb8 0%,transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;overflow:hidden;position:relative}
+.hero .innen{max-width:1100px;margin:0 auto;padding:3rem 1.2rem 3.5rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.05;margin:.3rem 0 .8rem}
+.hero h1 span{background:linear-gradient(90deg,var(--gelb),var(--koralle));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#d7ddf7;max-width:36rem}
+.chip{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:.2rem .7rem;border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;padding:.7rem 1.1rem;font-weight:700;text-decoration:none;background:var(--koralle);color:#fff;box-shadow:0 6px 18px rgba(255,93,93,.35);transition:transform .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn.hell{background:#fff;color:var(--navy);box-shadow:none}
+.btn.leise{background:var(--bg);color:var(--ink);box-shadow:none;border:1px solid var(--rand)}
+.btn.klein{padding:.45rem .8rem;font-size:.9rem;border-radius:10px}
+.hero-svg{width:100%;height:auto}
+
+/* Layout */
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 4rem}
+.ansicht{display:none;animation:rein .35s ease}
+.ansicht.zeigen{display:block}
+@keyframes rein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:1.6rem;margin:2.2rem 0 .8rem;line-height:1.2}
+h3{font-size:1.2rem;margin:1.4rem 0 .5rem}
+.karte{background:var(--karte);border:1px solid var(--rand);border-radius:var(--radius);padding:1.2rem 1.3rem;box-shadow:var(--schatten);margin:1rem 0}
+.raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.zwei{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:640px){.logo span{display:none}}
+@media (max-width:820px){.hero .innen,.zwei{grid-template-columns:1fr}.hero-svg{max-height:240px}}
+
+/* Missionskopf */
+.mkopf{border-radius:var(--radius);padding:1.6rem 1.4rem;color:#fff;position:relative;overflow:hidden;margin-top:1rem}
+.mkopf h2{margin:.4rem 0 .4rem;font-size:clamp(1.6rem,4vw,2.3rem)}
+.mkopf p{margin:.2rem 0;max-width:46rem;opacity:.95}
+.mkopf .deko{position:absolute;right:-30px;top:-30px;width:200px;height:200px;opacity:.18}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.meta span{background:rgba(255,255,255,.18);border-radius:999px;padding:.15rem .65rem;font-size:.82rem;font-weight:700}
+
+/* Kästen */
+.kasten{border-radius:14px;padding:1rem 1.1rem;margin:1rem 0;border-left:6px solid}
+.kasten.fall{background:#fff4ec;border-color:var(--m1)}
+.kasten.heft{background:#fffbe8;border-color:var(--gelb)}
+.kasten.buch{background:#eef4ff;border-color:var(--blau)}
+.kasten.ziel{background:#eefaf4;border-color:var(--gruen)}
+.kasten.ki{background:#f3efff;border-color:var(--violett)}
+.kasten.warn{background:#fff0f0;border-color:var(--koralle)}
+.kasten h4{margin:0 0 .35rem;font-size:1rem}
+.kasten ul,.kasten ol{margin:.3rem 0;padding-left:1.25rem}
+.aufgabe{background:#fff;border:1px solid var(--rand);border-radius:14px;padding:1rem 1.1rem;margin:1rem 0;position:relative}
+.aufgabe .nr{display:inline-block;background:var(--navy);color:#fff;font-weight:800;border-radius:8px;padding:.05rem .5rem;margin-right:.4rem;font-size:.9rem}
+.op{font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:.85em;color:var(--violett)}
+.stern{font-size:.8rem;color:var(--grau);font-weight:700;margin-left:.3rem}
+details{background:var(--bg);border-radius:10px;margin:.45rem 0;border:1px solid var(--rand)}
+details summary{cursor:pointer;padding:.5rem .8rem;font-weight:700;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸ ";color:var(--grau)}
+details[open] summary::before{content:"▾ "}
+details>div{padding:.1rem .9rem .8rem}
+details.loesung summary{color:var(--gruen)}
+.satz{display:flex;flex-wrap:wrap;gap:.35rem;margin:.4rem 0}
+.satz span{background:#fff;border:1px dashed #b9c0d6;border-radius:8px;padding:.15rem .5rem;font-size:.92rem}
+.fb{font-weight:700;color:var(--violett)}
+
+/* Mias Jahr */
+.zeitleiste{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem}
+@media (max-width:820px){.zeitleiste{grid-template-columns:1fr 1fr}}
+.zeit{background:#fff;border:1px solid var(--rand);border-radius:16px;padding:.9rem;text-align:left;box-shadow:var(--schatten);text-decoration:none;color:inherit;transition:transform .15s}
+.zeit:hover{transform:translateY(-3px)}
+.zeit .em{font-size:2rem}
+.zeit b{display:block;margin:.2rem 0}
+.zeit small{color:var(--grau)}
+
+/* Missionskarten */
+.mkarte{display:block;border-radius:18px;padding:1.1rem 1.2rem;color:#fff;text-decoration:none;position:relative;overflow:hidden;min-height:150px;box-shadow:var(--schatten);transition:transform .15s}
+.mkarte:hover{transform:translateY(-3px)}
+.mkarte small{font-weight:800;letter-spacing:.06em;opacity:.9}
+.mkarte h3{margin:.3rem 0 .2rem;font-size:1.25rem}
+.mkarte p{margin:0;font-size:.92rem;opacity:.95}
+.mkarte .abz{position:absolute;right:.8rem;top:.8rem;font-size:1.6rem}
+.mkarte.fertig::after{content:"✓ geschafft";position:absolute;right:.8rem;bottom:.7rem;background:#fff;color:var(--gruen);font-weight:800;font-size:.75rem;padding:.1rem .5rem;border-radius:999px}
+
+/* Check-in */
+.aussage{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--rand)}
+.aussage:last-child{border:0}
+.wahl{display:flex;gap:.3rem;flex-wrap:wrap}
+.wahl button{border:1.5px solid var(--rand);background:#fff;border-radius:10px;padding:.35rem .6rem;font-size:.88rem;font-weight:700}
+.wahl button.an{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media (max-width:640px){.aussage{grid-template-columns:1fr}}
+.vergleich td,.vergleich th{padding:.4rem .5rem;border-bottom:1px solid var(--rand);text-align:left;font-size:.92rem}
+.vergleich{border-collapse:collapse;width:100%}
+.ok{color:var(--gruen);font-weight:800}.nok{color:var(--koralle);font-weight:800}
+
+/* Stepper-Animationen */
+.stepper{background:#0f1733;border-radius:18px;padding:1rem;color:#fff;margin:1rem 0}
+.stepper svg{display:block;width:100%;height:auto;background:#fdfcf8;border-radius:12px}
+.stepper .steuer{display:flex;align-items:center;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.stepper .steuer button{background:#26346b;color:#fff;border:0;border-radius:10px;padding:.45rem .9rem;font-weight:700}
+.stepper .steuer button:disabled{opacity:.35}
+.stepper .punkte{display:flex;gap:.3rem;margin-left:auto}
+.stepper .punkte i{width:10px;height:10px;border-radius:50%;background:#3a4782;display:block}
+.stepper .punkte i.an{background:var(--gelb)}
+.stepper .text{min-height:3.3em;margin-top:.6rem;font-size:1rem;color:#e3e8ff}
+.stepper .text b{color:var(--gelb)}
+.s{opacity:0;transition:opacity .6s ease,transform .8s ease}
+.s.an{opacity:1}
+.weg{transition:opacity .6s}
+.weg.aus{opacity:0}
+@keyframes wackel{0%,100%{transform:translate(0,0)}25%{transform:translate(1.5px,-1px)}75%{transform:translate(-1.5px,1px)}}
+.wackel{animation:wackel 1.2s ease-in-out infinite;transform-box:fill-box}
+@keyframes puls{0%,100%{opacity:.25}50%{opacity:.9}}
+.puls{animation:puls 1.4s ease-in-out infinite}
+@keyframes fliess{to{stroke-dashoffset:-40}}
+.fliess{stroke-dasharray:8 12;animation:fliess 1.2s linear infinite}
+@keyframes schweb{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.schweb{animation:schweb 2.4s ease-in-out infinite;transform-box:fill-box}
+@media (prefers-reduced-motion:reduce){.wackel,.puls,.fliess,.schweb{animation:none}.s{transition:none}}
+
+/* Spiele */
+.spiel{background:linear-gradient(135deg,#1d2b5c,#3a2d7a);color:#fff;border-radius:18px;padding:1.2rem;margin:1rem 0}
+.spiel h3{margin-top:0}
+.spiel .opts{display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0}
+.spiel .opts button{background:#fff;border:3px solid transparent;border-radius:14px;padding:.4rem;width:110px}
+.spiel .opts button.richtig{border-color:var(--gruen);background:#e8fff1}
+.spiel .opts button.falsch{border-color:var(--koralle);animation:schuettel .35s}
+@keyframes schuettel{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.spiel .stand{font-weight:800;color:var(--gelb)}
+.ordnen{list-style:none;padding:0;margin:.6rem 0;display:grid;gap:.45rem}
+.ordnen button{width:100%;text-align:left;background:#fff;color:var(--ink);border:2px solid transparent;border-radius:12px;padding:.6rem .8rem;font-weight:600}
+.ordnen button .pos{display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--bg);margin-right:.5rem;font-weight:800}
+.ordnen button.gesetzt{background:#e8fff1;border-color:var(--gruen)}
+.ordnen button.gesetzt .pos{background:var(--gruen);color:#fff}
+.ordnen button.falsch{border-color:var(--koralle);animation:schuettel .35s}
+.sort{display:grid;gap:.5rem;margin:.6rem 0}
+.sort .item{background:#fff;color:var(--ink);border-radius:12px;padding:.6rem .8rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.sort .item span{flex:1;min-width:180px;font-weight:600}
+.sort .item button{border:1.5px solid var(--rand);background:var(--bg);border-radius:9px;padding:.3rem .6rem;font-weight:700;font-size:.85rem}
+.sort .item.richtig{outline:3px solid var(--gruen)}
+.sort .item.falsch{outline:3px solid var(--koralle);animation:schuettel .35s}
+.sort .item .erkl{flex-basis:100%;font-size:.88rem;color:var(--grau);display:none}
+.sort .item.richtig .erkl,.sort .item.falsch .erkl{display:block}
+
+/* Flipkarten */
+.flip{perspective:900px;height:210px;cursor:pointer}
+.flip .innen{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.um .innen{transform:rotateY(180deg)}
+.flip .vorne,.flip .hinten{position:absolute;inset:0;border-radius:16px;padding:1rem;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column}
+.flip .vorne{background:#fff;border:1px solid var(--rand);align-items:center;justify-content:center;text-align:center;box-shadow:var(--schatten)}
+.flip .vorne b{margin-top:.4rem}
+.flip .vorne small{color:var(--grau)}
+.flip .hinten{background:var(--navy);color:#fff;transform:rotateY(180deg);font-size:.9rem;overflow:auto}
+
+/* Simulation */
+.sim{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start}
+@media (max-width:820px){.sim{grid-template-columns:1fr}}
+#simCanvas{width:100%;max-width:400px;aspect-ratio:1;border-radius:12px;background:#0b1230;display:block}
+.regler{width:100%;accent-color:var(--tuerkis)}
+.legende{display:flex;flex-wrap:wrap;gap:.6rem;font-size:.85rem;margin:.5rem 0}
+.legende i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:.25rem;vertical-align:-1px}
+.zahlen{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:.6rem 0}
+.zahlen div{background:rgba(255,255,255,.08);border-radius:12px;padding:.5rem;text-align:center}
+.zahlen b{display:block;font-size:1.4rem;color:var(--gelb)}
+
+/* Graph */
+.graph-btns{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}
+.graph-btns button{border:0;border-radius:10px;padding:.45rem .8rem;font-weight:700;background:#26346b;color:#fff}
+.graph-btns button.an{background:var(--gelb);color:#3a2500}
+.kurve{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 1.6s ease}
+.kurve.an{stroke-dashoffset:0}
+
+/* Quiz */
+.quiz .frage{margin:1rem 0 1.4rem}
+.quiz .frage p{font-weight:700;margin:.2rem 0 .5rem}
+.quiz .antw{display:grid;gap:.4rem}
+.quiz .antw button{text-align:left;border:1.5px solid var(--rand);background:#fff;border-radius:12px;padding:.55rem .8rem}
+.quiz .antw button.richtig{background:#e8fff1;border-color:var(--gruen)}
+.quiz .antw button.falsch{background:#fff0f0;border-color:var(--koralle)}
+.quiz .erkl{font-size:.92rem;color:var(--grau);margin-top:.4rem;display:none}
+.quiz .frage.beantwortet .erkl{display:block}
+.balken{height:14px;background:var(--rand);border-radius:999px;overflow:hidden}
+.balken i{display:block;height:100%;background:linear-gradient(90deg,var(--tuerkis),var(--gruen));width:0;transition:width .6s}
+
+/* Raster/Positionslinie */
+.kraster td,.kraster th{padding:.55rem .5rem;border-bottom:1px solid var(--rand);vertical-align:middle;text-align:left}
+.kraster{border-collapse:collapse;width:100%}
+.kraster .wahl button{font-size:1.15rem;padding:.2rem .5rem}
+.linie{display:flex;justify-content:space-between;font-size:.82rem;color:var(--grau);font-weight:700}
+
+/* Glossar */
+.glossar{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.6rem}
+.glossar div{background:#fff;border:1px solid var(--rand);border-radius:12px;padding:.6rem .8rem;font-size:.93rem}
+.glossar b{color:var(--navy2)}
+#glossarSuche{width:100%;padding:.7rem 1rem;border-radius:12px;border:1.5px solid var(--rand);font:inherit}
+
+/* Abschluss */
+.abschluss{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;background:var(--navy);color:#fff;border-radius:18px;padding:1.1rem 1.3rem;margin-top:2rem}
+.abzeichen{display:flex;gap:.6rem;flex-wrap:wrap}
+.abzeichen div{width:86px;text-align:center;font-size:.75rem;font-weight:700;color:var(--grau)}
+.abzeichen div span{display:grid;place-items:center;width:64px;height:64px;margin:0 auto .3rem;border-radius:50%;background:var(--rand);font-size:1.8rem;filter:grayscale(1);opacity:.5}
+.abzeichen div.hat span{filter:none;opacity:1;background:linear-gradient(135deg,var(--gelb),#ff9d2e);box-shadow:0 4px 14px rgba(255,157,46,.4)}
+.abzeichen div.hat{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%) translateY(150%);background:var(--navy);color:#fff;padding:.7rem 1.1rem;border-radius:14px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .35s;z-index:99}
+.toast.zeigen{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--grau);font-size:.85rem;padding:2rem 1rem 3rem}
+table.daten{border-collapse:collapse;width:100%;font-size:.95rem}
+table.daten td,table.daten th{border-bottom:1px solid var(--rand);padding:.45rem .5rem;text-align:left}
+.quelle{font-size:.82rem;color:var(--grau)}
+@media print{.leiste,.btn,.stepper .steuer,.toast{display:none}.ansicht{display:block!important}}
+</style>
+</head>
+<body>
+
+<header class="leiste">
+  <div class="innen">
+    <a class="logo" href="#start" aria-label="Zur Startseite">🛡️ <span>Operation Abwehr</span></a>
+    <nav class="tabs" id="tabs" aria-label="Missionen">
+      <a href="#start" data-v="start">Start</a>
+      <a href="#m1" data-v="m1">1 Erste Linie</a>
+      <a href="#m2" data-v="m2">2 Antikörper</a>
+      <a href="#m3" data-v="m3">3 Zellteam</a>
+      <a href="#m4" data-v="m4">4 Impfung</a>
+      <a href="#m5" data-v="m5">5 Allergie</a>
+      <a href="#m6" data-v="m6">6 Transplantation</a>
+      <a href="#m7" data-v="m7">7 Check-out</a>
+      <a href="#glossar" data-v="glossar">Glossar</a>
+    </nav>
+    <button class="xp" id="xpAnzeige" title="Deine Abwehrpunkte" onclick="location.hash='#m7'">⚡ <span id="xpWert">0</span> XP</button>
+  </div>
+</header>
+
+<!-- ================= START ================= -->
+<section class="ansicht" id="v-start">
+  <div class="hero">
+    <div class="innen">
+      <div>
+        <span class="chip">BIOLOGIE · JAHRGANG 10 · 7 MISSIONEN</span>
+        <h1>Operation <span>Abwehr</span><br>Dein Immunsystem</h1>
+        <p>Jede Sekunde versuchen Bakterien, Viren und Pilze, in deinen Körper einzudringen – und fast immer verlieren sie. Wie schafft dein Körper das? Und warum greift er manchmal harmlose Pollen oder sogar ein lebensrettendes Spenderorgan an?</p>
+        <p style="margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap">
+          <a class="btn" href="#checkin">Check-in starten</a>
+          <a class="btn hell" href="#m1">Zu Mission 1</a>
+        </p>
+      </div>
+      <svg class="hero-svg" viewBox="0 0 400 320" role="img" aria-label="Illustration: Antikörper umzingeln ein Virus">
+        <defs>
+          <radialGradient id="gv" cx="40%" cy="35%"><stop offset="0" stop-color="#ff9b8f"/><stop offset="1" stop-color="#e2384a"/></radialGradient>
+          <radialGradient id="gz" cx="40%" cy="35%"><stop offset="0" stop-color="#9ff3e8"/><stop offset="1" stop-color="#12b5a5"/></radialGradient>
+        </defs>
+        <g class="schweb">
+          <circle cx="200" cy="160" r="58" fill="url(#gv)"/>
+          <g stroke="#e2384a" stroke-width="6" stroke-linecap="round">
+            <line x1="200" y1="102" x2="200" y2="82"/><line x1="200" y1="218" x2="200" y2="238"/><line x1="142" y1="160" x2="122" y2="160"/><line x1="258" y1="160" x2="278" y2="160"/>
+            <line x1="159" y1="119" x2="145" y2="105"/><line x1="241" y1="201" x2="255" y2="215"/><line x1="241" y1="119" x2="255" y2="105"/><line x1="159" y1="201" x2="145" y2="215"/>
+          </g>
+          <g fill="#ffc23d"><polygon points="200,70 192,84 208,84"/><polygon points="200,250 192,236 208,236"/><polygon points="110,160 124,152 124,168"/><polygon points="290,160 276,152 276,168"/></g>
+          <circle cx="185" cy="145" r="10" fill="#fff" opacity=".35"/>
+        </g>
+        <g stroke="#9db0ff" stroke-width="7" stroke-linecap="round" fill="none">
+          <path d="M200 20 v22 M200 42 l-12 14 M200 42 l12 14" class="schweb"/>
+          <path d="M375 160 h-22 M353 160 l-14 -12 M353 160 l-14 12" class="schweb"/>
+          <path d="M30 160 h22 M52 160 l14 -12 M52 160 l14 12" class="schweb"/>
+          <path d="M200 300 v-22 M200 278 l-12 -14 M200 278 l12 -14" class="schweb"/>
+        </g>
+        <circle cx="70" cy="60" r="26" fill="url(#gz)" class="schweb"/><circle cx="62" cy="54" r="6" fill="#fff" opacity=".5"/>
+        <circle cx="340" cy="270" r="20" fill="url(#gz)" class="schweb"/>
+        <g fill="#6ee7b7" class="wackel"><rect x="320" y="40" width="34" height="14" rx="7"/><rect x="40" y="260" width="34" height="14" rx="7"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <main>
+    <h2>📅 Ein Jahr im Leben von Mia (16)</h2>
+    <p>Mia geht in die 10. Klasse in Köln. Ihr Jahr ist ganz normal – und trotzdem hat ihr Immunsystem ständig zu tun. Jede Mission beginnt mit einem Moment aus Mias Jahr.</p>
+    <div class="zeitleiste">
+      <a class="zeit" href="#m1"><span class="em">🛹</span><b>März</b><small>Sturz beim Skaten – die Wunde wird rot, heiß und dick.</small></a>
+      <a class="zeit" href="#m2"><span class="em">🤒</span><b>April</b><small>Grippe! Eine Woche Bett. Danach: nie wieder dieselbe Grippe?</small></a>
+      <a class="zeit" href="#m4"><span class="em">💉</span><b>Mai</b><small>Impfpass-Check vor der Klassenfahrt: „Masern? Fehlt die zweite!“</small></a>
+      <a class="zeit" href="#m5"><span class="em">🌳</span><b>Juni</b><small>Die Birken blühen. Mias Augen jucken, die Nase läuft.</small></a>
+      <a class="zeit" href="#m6"><span class="em">🫘</span><b>Herbst</b><small>Onkel Deniz wartet auf eine Spenderniere.</small></a>
+    </div>
+
+    <h2>🗺️ Deine Missionen</h2>
+    <div class="raster" id="missionsKarten">
+      <a class="mkarte" href="#m1" data-m="m1" style="background:linear-gradient(135deg,#ff7a45,#ff4f5e)"><small>MISSION 1 · 1 STD.</small><h3>Die erste Verteidigungslinie</h3><p>Barrieren, Entzündung, Fresszellen</p><span class="abz">🔥</span></a>
+      <a class="mkarte" href="#m2" data-m="m2" style="background:linear-gradient(135deg,#7b5cff,#a65cff)"><small>MISSION 2 · 1 STD.</small><h3>Schlüssel &amp; Schloss</h3><p>B-Zellen und Antikörper</p><span class="abz">🔑</span></a>
+      <a class="mkarte" href="#m3" data-m="m3" style="background:linear-gradient(135deg,#2f7bff,#4fb0ff)"><small>MISSION 3 · 1 STD.</small><h3>Das Zellteam</h3><p>Killerzellen, Gedächtnis, Gesamtablauf</p><span class="abz">🧠</span></a>
+      <a class="mkarte" href="#m4" data-m="m4" style="background:linear-gradient(135deg,#12b5a5,#1cd1a0)"><small>MISSION 4 · 1 STD.</small><h3>Impfen – Training ohne Risiko</h3><p>Aktiv, passiv, Herdenschutz</p><span class="abz">💉</span></a>
+      <a class="mkarte" href="#m5" data-m="m5" style="background:linear-gradient(135deg,#f2a20c,#ffc23d)"><small>MISSION 5 · 1 STD.</small><h3>Fehlalarm: Allergie</h3><p>Wenn die Abwehr übertreibt</p><span class="abz">🌼</span></a>
+      <a class="mkarte" href="#m6" data-m="m6" style="background:linear-gradient(135deg,#ff4fa3,#ff7ac0)"><small>MISSION 6 · 1 STD.</small><h3>Ein fremdes Organ</h3><p>Abstoßung und die Organspende-Debatte</p><span class="abz">⚖️</span></a>
+      <a class="mkarte" href="#m7" data-m="m7" style="background:linear-gradient(135deg,#2fb36d,#5fd38f)"><small>MISSION 7 · 1 STD.</small><h3>Check-out</h3><p>Abschlusstest, Rückblick, Kompetenzraster</p><span class="abz">🏆</span></a>
+    </div>
+
+    <div class="kasten ziel">
+      <h4>🎯 Am Ende der Reihe kannst du …</h4>
+      <ul>
+        <li>die unspezifische und die spezifische Immunabwehr <b>beschreiben</b> und ihr Zusammenspiel <b>erklären</b>,</li>
+        <li>den Unterschied zwischen aktiver und passiver Immunisierung <b>erläutern</b> und Diagramme zur Antikörperbildung <b>auswerten</b>,</li>
+        <li>Allergien als Überreaktion des Immunsystems <b>erklären</b> und von Unverträglichkeiten <b>abgrenzen</b>,</li>
+        <li>die Abstoßung von Spenderorganen <b>erklären</b> und Regeln zur Organspende begründet <b>beurteilen</b>,</li>
+        <li>Informationen aus Internet, Social Media und KI-Chatbots kritisch <b>prüfen</b>.</li>
+      </ul>
+    </div>
+
+    <div class="kasten buch"><h4>📘 Dein Buch ist die Basis</h4>Wir arbeiten mit <b>Bioskop 3</b>, Kapitel 4.5, 4.6, 4.9 und 4.10 (S. 64–71 und 80–83). Diese Seite ergänzt das Buch mit Animationen, Spielen, Hilfen und Tests. <b>Ergebnisse notierst du immer im Heft.</b></div>
+
+    <!-- Check-in -->
+    <h2 id="checkin">🧭 Check-in: Was denkst du jetzt?</h2>
+    <div class="karte">
+      <p>Entscheide aus dem Bauch heraus – es gibt keine Noten. Am Ende der Reihe beantwortest du dieselben Aussagen noch einmal und siehst, was sich bei dir verändert hat.</p>
+      <div id="checkinListe"></div>
+      <p style="margin-top:1rem"><button class="btn klein" onclick="checkinSpeichern()">Antworten speichern</button> <span id="checkinInfo" class="quelle"></span></p>
+    </div>
+    <div class="kasten heft"><h4>📓 Ins Heft</h4>Lege eine neue Überschrift <b>„Das Immunsystem“</b> an. Notiere die zwei Aussagen, bei denen du dir am <i>unsichersten</i> warst. Darauf kommen wir zurück.</div>
+  </main>
+</section>
+
+<!-- ================= MISSION 1 ================= -->
+<section class="ansicht" id="v-m1"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#ff7a45,#ff4f5e)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 1 · ca. 45 Min.</span>
+    <h2>Die erste Verteidigungslinie</h2>
+    <p>Warum wird eine Wunde rot, heiß, dick und tut weh – und warum ist das eigentlich gut?</p>
+    <div class="meta"><span>📘 Bioskop S. 64–65</span><span>🔬 Modellversuch</span><span>🎬 Animation</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>🛹 März: Mias Sturz</h4>Mia rutscht beim Skaten aus und schürft sich das Knie auf. Ein kleiner Holzsplitter steckt in der Haut. Zwei Tage später ist die Stelle <b>gerötet, warm, geschwollen</b> und <b>schmerzt</b>. Ein bisschen gelblicher Eiter ist auch zu sehen. Mias Vater meint: „Da kämpft dein Körper!“</div>
+
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Stelle</span> eine Vermutung <span class="op">auf</span>: Was passiert unter der Haut, damit diese vier Anzeichen entstehen? Notiere sie in einem Satz im Heft.</div>
+
+  <h3>Barrieren: Die Mauer um die Festung</h3>
+  <p>Die meisten Erreger kommen gar nicht erst hinein. Haut, Schleimhäute mit Flimmerhärchen, Magensäure, Tränenflüssigkeit und Speichel bilden die <b>äußeren Barrieren</b>. Lies dazu im Buch „Die Haut als Schutzbarriere“ und das Basiskonzept zur Nasenschleimhaut (S. 64–65).</p>
+  <div class="sort spiel" id="barrierenSpiel" style="display:block">
+    <h3>🧱 Mini-Spiel: Welche Barriere wirkt wie?</h3>
+    <p>Ordne jeder Barriere ihren Trick zu.</p>
+    <div class="sort" id="barrierenItems"></div>
+  </div>
+
+  <h3>🎬 Animation: Die Entzündungsreaktion</h3>
+  <p>Ist die Mauer durchbrochen, startet die <b>unspezifische Abwehr</b>. Klicke dich Schritt für Schritt durch.</p>
+  <div class="stepper" id="stEntz">
+    <svg viewBox="0 0 640 330" role="img" aria-labelledby="entzT">
+      <title id="entzT">Entzündungsreaktion in der Haut, schrittweise</title>
+      <rect x="0" y="0" width="640" height="60" fill="#dff3ff"/>
+      <rect x="0" y="60" width="640" height="38" fill="#f6c9a8"/>
+      <rect x="0" y="98" width="640" height="232" fill="#fbe3d0"/>
+      <text x="12" y="84" font-size="13" fill="#8a5a3c" font-weight="700">Oberhaut</text>
+      <text x="12" y="122" font-size="13" fill="#8a5a3c" font-weight="700">Lederhaut</text>
+      <!-- Blutgefäß -->
+      <g id="gefaess">
+        <rect class="weg" data-aus="4" x="0" y="262" width="640" height="34" rx="17" fill="#e85a5a"/>
+        <rect class="s" data-s="4" x="0" y="250" width="640" height="56" rx="28" fill="#d62f3f"/>
+        <line x1="10" y1="279" x2="630" y2="279" stroke="#ffd1d1" stroke-width="3" class="fliess"/>
+        <text x="520" y="322" font-size="13" fill="#8a2a2a" font-weight="700">Blutgefäß</text>
+      </g>
+      <!-- Splitter -->
+      <g class="s" data-s="1"><polygon points="300,10 330,10 322,170" fill="#9b6a3c" stroke="#6b4423" stroke-width="2"/></g>
+      <!-- Bakterien -->
+      <g class="s" data-s="2" id="bakt">
+        <g fill="#3fb86b" stroke="#237a44" stroke-width="1.5">
+          <rect class="wackel weg" data-aus="6" x="270" y="140" width="22" height="10" rx="5"/>
+          <rect class="wackel weg" data-aus="6" x="345" y="150" width="22" height="10" rx="5"/>
+          <rect class="wackel weg" data-aus="6" x="300" y="180" width="22" height="10" rx="5"/>
+          <rect class="wackel weg" data-aus="6" x="250" y="170" width="22" height="10" rx="5"/>
+          <rect class="wackel weg" data-aus="6" x="360" y="185" width="22" height="10" rx="5"/>
+          <rect class="wackel weg" data-aus="6" x="330" y="125" width="22" height="10" rx="5"/>
+        </g>
+      </g>
+      <!-- Mastzelle + Histamin -->
+      <g>
+        <circle cx="170" cy="170" r="24" fill="#b48cff" stroke="#7b5cff" stroke-width="2"/>
+        <g fill="#5a3ad1"><circle cx="162" cy="164" r="3"/><circle cx="174" cy="160" r="3"/><circle cx="178" cy="174" r="3"/><circle cx="164" cy="178" r="3"/></g>
+        <text x="138" y="210" font-size="12" fill="#5a3ad1" font-weight="700">Mastzelle</text>
+        <g class="s" data-s="3" fill="#ffb800">
+          <circle cx="200" cy="160" r="4" class="puls"/><circle cx="210" cy="180" r="4" class="puls"/><circle cx="196" cy="198" r="4" class="puls"/><circle cx="215" cy="145" r="4" class="puls"/><circle cx="225" cy="205" r="4" class="puls"/><circle cx="190" cy="228" r="4" class="puls"/>
+          <text x="196" y="132" font-size="12" fill="#b07800" font-weight="700">Histamin</text>
+        </g>
+      </g>
+      <!-- Flüssigkeit -->
+      <g class="s" data-s="4" fill="#7cc7ff" opacity=".8">
+        <circle cx="420" cy="230" r="5"/><circle cx="440" cy="215" r="5"/><circle cx="455" cy="235" r="5"/><circle cx="470" cy="210" r="5"/><circle cx="430" cy="200" r="5"/>
+        <text x="420" y="190" font-size="12" fill="#1f6fb5" font-weight="700">Flüssigkeit → Schwellung</text>
+      </g>
+      <!-- Fresszellen -->
+      <g class="s" data-s="5">
+        <path d="M265 210 q-20 -18 2 -32 q16 -14 34 2 q22 6 12 26 q-6 22 -30 14 q-14 2 -18 -10z" fill="#5ec8ff" stroke="#1f8ad1" stroke-width="2"/>
+        <circle cx="285" cy="200" r="8" fill="#1f6fb5"/>
+        <path d="M345 215 q-22 -12 -6 -30 q12 -16 32 -4 q20 10 8 28 q-10 18 -28 10z" fill="#5ec8ff" stroke="#1f8ad1" stroke-width="2"/>
+        <circle cx="358" cy="203" r="8" fill="#1f6fb5"/>
+        <text x="380" y="245" font-size="12" fill="#1f6fb5" font-weight="700">Fresszellen (Makrophagen)</text>
+        <path d="M300 250 v-28 M352 250 v-24" stroke="#1f8ad1" stroke-width="2" stroke-dasharray="4 4"/>
+      </g>
+      <!-- Eiter -->
+      <g class="s" data-s="6" fill="#f4d35e" stroke="#c9a227">
+        <circle cx="300" cy="90" r="9"/><circle cx="316" cy="86" r="8"/><circle cx="310" cy="100" r="8"/><circle cx="292" cy="102" r="7"/>
+        <text x="335" y="92" font-size="12" fill="#8a6d00" stroke="none" font-weight="700">Eiter</text>
+      </g>
+      <!-- Rötung Overlay -->
+      <defs><radialGradient id="roet"><stop offset="0" stop-color="#ff2a2a" stop-opacity=".38"/><stop offset="1" stop-color="#ff2a2a" stop-opacity="0"/></radialGradient></defs><ellipse class="s" data-s="4" cx="315" cy="165" rx="190" ry="120" fill="url(#roet)"/>
+    </svg>
+    <div class="text" aria-live="polite"></div>
+    <div class="steuer"><button data-z>⟲</button><button data-p>◀ zurück</button><button data-n>weiter ▶</button><div class="punkte"></div></div>
+  </div>
+
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Erkläre</span> die vier Entzündungszeichen Rötung, Wärme, Schwellung und Schmerz mithilfe der Animation und des Buches (S. 65 „Ablauf einer Entzündungsreaktion“). Lege dazu eine Tabelle im Heft an: <i>Anzeichen | Ursache | Nutzen</i>.
+    <details><summary>Hilfe 1: Worauf achten?</summary><div>Achte auf das Blutgefäß und den Botenstoff Histamin. Was passiert mit dem Gefäß und was tritt aus?</div></details>
+    <details><summary>Hilfe 2: Satzbausteine</summary><div><div class="satz"><span>Histamin bewirkt, dass …</span><span>Durch die erweiterten Gefäße …</span><span>Dadurch gelangen mehr … zur Wunde.</span><span>Die Schwellung drückt auf …</span></div></div></details>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>
+      <b>Rötung &amp; Wärme:</b> Histamin erweitert die Blutgefäße → mehr warmes Blut fließt zur Wunde. Nutzen: mehr Abwehrzellen und Nährstoffe; Wärme beschleunigt Abwehrreaktionen.<br>
+      <b>Schwellung:</b> Gefäßwände werden durchlässiger, Flüssigkeit tritt ins Gewebe aus. Nutzen: Fresszellen können leichter ins Gewebe wandern.<br>
+      <b>Schmerz:</b> Schwellung drückt auf Nervenenden, Botenstoffe reizen sie. Nutzen: Warnsignal – Wunde schonen!<br>
+      <b>Eiter:</b> abgestorbene Fresszellen, Erreger und Gewebereste.</div></details>
+  </div>
+
+  <h3>🔬 Modellversuch: Wie gut hilft Händewaschen?</h3>
+  <div class="karte">
+    <p><b>Material:</b> etwas Glitzer oder Zimt (= „Bakterien“), Wasser, Seife, Papiertücher, Timer.</p>
+    <ol>
+      <li><b>Hypothese:</b> Formuliert vorher: „Wenn man die Hände … wäscht, dann …“</li>
+      <li>Person A reibt die Hände mit Glitzer ein und gibt drei Personen die Hand. Notiert, wie weit der Glitzer kommt.</li>
+      <li>A wäscht 5 s nur mit Wasser, B 20 s mit Seife. Vergleicht die Hände.</li>
+      <li><b>Auswertung:</b> Wurde die Hypothese bestätigt?</li>
+    </ol>
+  </div>
+  <div class="aufgabe"><span class="nr">3</span><span class="op">Beurteile</span> den Modellversuch: Was zeigt das Modell gut, wo stimmt es nicht mit echten Bakterien überein? <span class="stern">★★ Modellkritik</span>
+    <details><summary>Hilfe: Denkanstöße</summary><div>Sind echte Bakterien sichtbar? Vermehren sich Glitzerteilchen? Wirkt Seife auf Glitzer genauso wie auf die fettige Hülle mancher Erreger?</div></details>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div><b>Stärken:</b> zeigt anschaulich die Übertragung durch Kontakt und dass gründliches Waschen mit Seife mehr entfernt. <b>Grenzen:</b> echte Erreger sind unsichtbar, vermehren sich, Seife zerstört manche Erreger zusätzlich (Fetthüllen); Glitzer haftet anders als Bakterien.</div></details>
+  </div>
+
+  <div class="kasten heft"><h4>📓 Ins Heft – Merksatz</h4>Die <b>unspezifische Abwehr</b> wirkt sofort und gegen <i>alle</i> Erreger gleich: Barrieren halten Erreger draußen; eingedrungene Erreger lösen eine <b>Entzündung</b> aus, bei der <b>Fresszellen (Makrophagen)</b> die Erreger aufnehmen und verdauen (<b>Phagocytose</b>).</div>
+  <div class="abschluss"><span>Mission 1 erledigt? Hake sie ab und hol dir dein Abzeichen.</span><button class="btn hell" onclick="missionFertig('m1')">🔥 Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 2 ================= -->
+<section class="ansicht" id="v-m2"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#7b5cff,#a65cff)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 2 · ca. 45 Min.</span>
+    <h2>Schlüssel &amp; Schloss</h2>
+    <p>Wie findet dein Körper unter Millionen Molekülen genau den einen Eindringling?</p>
+    <div class="meta"><span>📘 Bioskop S. 66–67</span><span>🎮 Passt-Spiel</span><span>🎬 Animation</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>🤒 April: Grippe</h4>Mia liegt mit Fieber im Bett. Erst nach etwa einer Woche geht es ihr besser. Ihre Ärztin sagt: „Dein Körper musste erst die <b>passenden Waffen bauen</b>.“ Warum dauert das so lange – und warum hilft die Fresszellen-Abwehr aus Mission 1 hier nicht allein?</div>
+
+  <h3>Antigene – der Ausweis der Erreger</h3>
+  <p>Jeder Erreger trägt auf seiner Oberfläche typische Moleküle, die <b>Antigene</b>. Sie sind wie ein Ausweis. Bestimmte weiße Blutzellen, die <b>B-Zellen</b>, tragen Rezeptoren, die nur zu <i>einem</i> Antigen passen – wie ein Schlüssel zu einem Schloss.</p>
+
+  <div class="spiel" id="schlossSpiel">
+    <h3>🔑 Passt-Spiel: Finde den passenden Antikörper!</h3>
+    <p>Links siehst du ein Antigen. Tippe den Antikörper an, dessen Bindestelle genau passt.</p>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+      <div style="background:#fff;border-radius:14px;padding:.4rem"><svg id="antigenBild" width="120" height="120" viewBox="0 0 120 120"></svg></div>
+      <div class="opts" id="schlossOpts"></div>
+    </div>
+    <p>Runde <span class="stand" id="schlossRunde">1</span>/5 · Treffer: <span class="stand" id="schlossTreffer">0</span></p>
+  </div>
+
+  <h3>🎬 Animation: Die humorale Immunantwort</h3>
+  <div class="stepper" id="stHum">
+    <svg viewBox="0 0 760 340" role="img" aria-labelledby="humT">
+      <title id="humT">Ablauf der humoralen Immunantwort</title>
+      <defs>
+        <g id="ak"><path d="M0 0 v16 M0 16 l-8 -9 M0 16 l8 -9" stroke="#7b5cff" stroke-width="3" fill="none" stroke-linecap="round" transform="rotate(180)"/></g>
+      </defs>
+      <!-- Erreger -->
+      <g class="s an" data-s="0">
+        <circle cx="70" cy="80" r="26" fill="#ff7a7a"/>
+        <g fill="#e2384a"><polygon points="70,46 63,56 77,56"/><polygon points="104,80 94,73 94,87"/><polygon points="70,114 63,104 77,104"/><polygon points="36,80 46,73 46,87"/></g>
+        <text x="38" y="135" font-size="13" font-weight="700" fill="#c0283a">Virus mit Antigenen ▲</text>
+      </g>
+      <!-- Makrophage -->
+      <g class="s" data-s="1">
+        <path d="M150 210 q-30 -30 0 -55 q25 -20 52 0 q30 10 18 40 q-8 30 -40 20 q-24 6 -30 -5z" fill="#5ec8ff" stroke="#1f8ad1" stroke-width="2"/>
+        <polygon points="205,160 198,170 212,170" fill="#e2384a"/>
+        <text x="128" y="250" font-size="12" font-weight="700" fill="#1f6fb5">Makrophage präsentiert</text>
+        <text x="128" y="264" font-size="12" font-weight="700" fill="#1f6fb5">das Antigen</text>
+        <path d="M90 105 Q120 140 150 160" stroke="#999" stroke-width="2" fill="none" stroke-dasharray="5 5"/>
+      </g>
+      <!-- T-Helfer -->
+      <g class="s" data-s="2">
+        <circle cx="300" cy="150" r="32" fill="#ffd35c" stroke="#d6a400" stroke-width="2"/>
+        <text x="300" y="155" font-size="13" text-anchor="middle" font-weight="800" fill="#6b5200">T-H</text>
+        <text x="262" y="205" font-size="12" font-weight="700" fill="#8a6d00">T-Helferzelle</text>
+        <path d="M222 168 L266 156" stroke="#d6a400" stroke-width="3" marker-end="url(#pf)"/>
+        <g class="puls" fill="#ffb800"><circle cx="340" cy="120" r="4"/><circle cx="350" cy="140" r="4"/><circle cx="345" cy="165" r="4"/></g>
+      </g>
+      <!-- B-Zellen Auswahl -->
+      <g class="s" data-s="3">
+        <g opacity=".35"><circle cx="440" cy="60" r="20" fill="#9be7c4"/><rect x="434" y="34" width="12" height="8" fill="#2fb36d"/></g>
+        <g opacity=".35"><circle cx="440" cy="250" r="20" fill="#9be7c4"/><circle cx="440" cy="226" r="6" fill="#2fb36d"/></g>
+        <g><circle cx="440" cy="150" r="24" fill="#2fb36d" stroke="#1a7a48" stroke-width="3"/><path d="M433 122 l7 10 l7 -10" fill="none" stroke="#fff" stroke-width="3"/>
+        <text x="410" y="190" font-size="12" font-weight="800" fill="#1a7a48">passende B-Zelle</text></g>
+        <path d="M335 150 L410 150" stroke="#d6a400" stroke-width="3" marker-end="url(#pf)"/>
+        <defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#d6a400"/></marker></defs>
+      </g>
+      <!-- Teilung -->
+      <g class="s" data-s="4">
+        <g fill="#2fb36d"><circle cx="540" cy="95" r="18"/><circle cx="560" cy="150" r="18"/><circle cx="540" cy="205" r="18"/></g>
+        <g fill="#0f7a6b"><circle cx="520" cy="270" r="16"/></g>
+        <text x="484" y="300" font-size="12" font-weight="700" fill="#0f7a6b">Gedächtniszelle</text>
+        <text x="578" y="98" font-size="12" font-weight="700" fill="#1a7a48">Plasmazellen</text>
+        <path d="M464 150 L536 150 M464 140 L524 102 M464 160 L524 198 M458 170 L512 256" stroke="#2fb36d" stroke-width="2" fill="none"/>
+      </g>
+      <!-- Antikörper -->
+      <g class="s" data-s="5" fill="none" stroke="#7b5cff" stroke-width="3" stroke-linecap="round">
+        <path d="M600 140 v14 M600 140 l-7 -8 M600 140 l7 -8"/>
+        <path d="M620 175 v14 M620 175 l-7 -8 M620 175 l7 -8"/>
+        <path d="M585 190 v14 M585 190 l-7 -8 M585 190 l7 -8"/>
+        <path d="M615 110 v14 M615 110 l-7 -8 M615 110 l7 -8"/>
+        <text x="575" y="235" font-size="12" font-weight="700" fill="#5a3ad1" stroke="none">Antikörper (Y)</text>
+      </g>
+      <!-- Verklumpung -->
+      <g class="s" data-s="6">
+        <circle cx="690" cy="130" r="14" fill="#ff7a7a"/><circle cx="725" cy="150" r="14" fill="#ff7a7a"/><circle cx="695" cy="170" r="14" fill="#ff7a7a"/>
+        <g stroke="#7b5cff" stroke-width="3" fill="none"><path d="M707 140 l10 5"/><path d="M692 145 v12"/><path d="M712 165 l-6 2"/></g>
+        <text x="660" y="205" font-size="12" font-weight="700" fill="#c0283a">Verklumpung</text>
+      </g>
+      <g class="s" data-s="7">
+        <path d="M675 270 q-24 -22 0 -40 q20 -14 40 0 q24 8 14 30 q-6 22 -30 14 q-18 4 -24 -4z" fill="#5ec8ff" stroke="#1f8ad1" stroke-width="2"/>
+        <text x="640" y="310" font-size="12" font-weight="700" fill="#1f6fb5">Fresszelle räumt auf</text>
+        <path d="M705 190 v35" stroke="#1f8ad1" stroke-width="2" stroke-dasharray="4 4"/>
+      </g>
+    </svg>
+    <div class="text" aria-live="polite"></div>
+    <div class="steuer"><button data-z>⟲</button><button data-p>◀ zurück</button><button data-n>weiter ▶</button><div class="punkte"></div></div>
+  </div>
+
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Beschreibe</span> den Ablauf der humoralen Immunantwort in 6 Schritten als Flussdiagramm im Heft. Nutze die Animation und Bioskop S. 66–67.
+    <details><summary>Hilfe: Startpunkte</summary><div>1. Makrophage nimmt Erreger auf und präsentiert Antigen → 2. T-Helferzelle … → 3. … → 4. … → 5. … → 6. Fresszellen …</div></details>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>1. Makrophage phagocytiert Erreger, präsentiert Antigen-Bruchstücke. 2. Passende T-Helferzelle erkennt das Antigen und wird aktiviert. 3. T-Helferzelle aktiviert die B-Zelle, deren Rezeptor zum Antigen passt (Botenstoffe). 4. B-Zelle teilt sich: Plasmazellen und Gedächtniszellen. 5. Plasmazellen bilden große Mengen Antikörper, die an die Antigene binden → Verklumpung (Antigen-Antikörper-Komplex). 6. Fresszellen beseitigen die Komplexe.</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Erläutere</span>, warum Mia etwa eine Woche krank war, obwohl Fresszellen sofort zur Stelle sind.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Fresszellen allein werden mit vielen, sich schnell vermehrenden Viren nicht fertig; Viren stecken außerdem in Körperzellen. Die spezifische Abwehr braucht Zeit: Die eine passende B-Zelle muss erst gefunden, aktiviert und vermehrt werden, bevor genug Antikörper gebildet sind (mehrere Tage).</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">3</span><span class="op">Beurteile</span> das Schlüssel-Schloss-Modell. Wo passt der Vergleich, wo hinkt er? <span class="stern">★★ Modellkritik</span>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Passt: Spezifität – nur passende Formen binden. Hinkt: Antikörper „schließen“ nichts auf, sondern markieren und verklumpen Erreger; Moleküle sind beweglich, nicht starr; ein Antikörper hat zwei Bindestellen.</div></details>
+  </div>
+  <div class="kasten heft"><h4>📓 Ins Heft – Merksatz</h4>Die <b>spezifische (humorale) Abwehr</b> richtet sich gegen <i>ein bestimmtes</i> Antigen. <b>Plasmazellen</b> bilden <b>Antikörper</b>, die nach dem <b>Schlüssel-Schloss-Prinzip</b> an das Antigen binden. Sie braucht beim ersten Kontakt mehrere Tage.</div>
+  <div class="abschluss"><span>Mission 2 erledigt?</span><button class="btn hell" onclick="missionFertig('m2')">🔑 Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 3 ================= -->
+<section class="ansicht" id="v-m3"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#2f7bff,#4fb0ff)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 3 · ca. 45 Min.</span>
+    <h2>Das Zellteam</h2>
+    <p>Antikörper erreichen keine Viren, die sich schon in Körperzellen verstecken. Wer übernimmt dann?</p>
+    <div class="meta"><span>📘 Bioskop S. 66–67</span><span>🃏 Steckbriefe</span><span>🧩 Gruppenpuzzle</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>🤒 Mia, zwei Jahre später</h4>Mias Klasse wird vom gleichen Grippevirus-Typ heimgesucht. Halb so viele Kinder liegen im Bett – Mia bleibt gesund. Zufall?</div>
+
+  <h3>🎬 Animation: Die zelluläre Immunantwort</h3>
+  <div class="stepper" id="stZell">
+    <svg viewBox="0 0 640 280" role="img" aria-labelledby="zellT">
+      <title id="zellT">Killer-T-Zelle zerstört eine virusinfizierte Körperzelle</title>
+      <g>
+        <ellipse cx="420" cy="140" rx="100" ry="80" fill="#ffe2c4" stroke="#e8a46a" stroke-width="3" class="weg" data-aus="4"/>
+        <circle cx="420" cy="140" r="26" fill="#f2b98a" class="weg" data-aus="4"/>
+        <text x="368" y="245" font-size="13" font-weight="700" fill="#a0602a" class="weg" data-aus="4">Körperzelle</text>
+      </g>
+      <g class="s" data-s="1">
+        <g fill="#ff7a7a" class="wackel weg" data-aus="4"><circle cx="380" cy="110" r="9"/><circle cx="455" cy="175" r="9"/><circle cx="460" cy="105" r="9"/><circle cx="390" cy="180" r="9"/></g>
+        <polygon class="weg" data-aus="4" points="320,140 332,132 332,148" fill="#e2384a"/>
+        <text x="320" y="40" font-size="13" font-weight="700" fill="#c0283a">Viren vermehren sich in der Zelle,</text>
+        <text x="320" y="56" font-size="13" font-weight="700" fill="#c0283a">Virus-Antigen ▲ erscheint außen</text>
+      </g>
+      <g class="s" data-s="2">
+        <circle cx="90" cy="70" r="28" fill="#ffd35c" stroke="#d6a400" stroke-width="2"/><text x="90" y="75" text-anchor="middle" font-size="12" font-weight="800" fill="#6b5200">T-H</text>
+        <path d="M118 80 L170 120" stroke="#d6a400" stroke-width="3"/>
+        <g class="puls" fill="#ffb800"><circle cx="135" cy="100" r="4"/><circle cx="152" cy="108" r="4"/></g>
+        <text x="40" y="30" font-size="12" font-weight="700" fill="#8a6d00">T-Helferzelle aktiviert …</text>
+      </g>
+      <g class="s" data-s="2" id="killer" style="transition:transform 1s ease">
+        <circle cx="200" cy="140" r="34" fill="#ff5d8f" stroke="#c42f63" stroke-width="3"/>
+        <text x="200" y="145" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">T-K</text>
+        <path d="M232 132 l10 8 l-10 8" fill="none" stroke="#c42f63" stroke-width="3"/>
+        <text x="150" y="200" font-size="12" font-weight="700" fill="#c42f63">Killer-T-Zelle</text>
+      </g>
+      <g class="s" data-s="3" fill="#ff5d8f">
+        <circle cx="300" cy="128" r="4" class="puls"/><circle cx="306" cy="146" r="4" class="puls"/><circle cx="296" cy="160" r="4" class="puls"/>
+        <text x="150" y="250" font-size="12" font-weight="700" fill="#c42f63" class="weg" data-aus="4">dockt an ▲ an, gibt Zellgift ab</text>
+      </g>
+      <g class="s" data-s="4">
+        <g fill="#f2b98a" opacity=".8"><circle cx="400" cy="120" r="10"/><circle cx="440" cy="160" r="12"/><circle cx="430" cy="110" r="7"/><circle cx="395" cy="165" r="9"/><circle cx="470" cy="135" r="6"/></g>
+        <text x="380" y="245" font-size="13" font-weight="700" fill="#1f6fb5">Zelle zerfällt – Fresszellen räumen auf</text>
+      </g>
+      <g class="s" data-s="5">
+        <circle cx="560" cy="60" r="20" fill="#0f7a6b"/><circle cx="600" cy="80" r="16" fill="#c42f63"/>
+        <text x="470" y="120" font-size="12" font-weight="700" fill="#0f7a6b">Gedächtniszellen bleiben</text>
+        <text x="470" y="135" font-size="12" font-weight="700" fill="#0f7a6b">jahrelang erhalten</text>
+      </g>
+    </svg>
+    <div class="text" aria-live="polite"></div>
+    <div class="steuer"><button data-z>⟲</button><button data-p>◀ zurück</button><button data-n>weiter ▶</button><div class="punkte"></div></div>
+  </div>
+
+  <h3>🃏 Zell-Steckbriefe (tippen zum Umdrehen)</h3>
+  <p><b>Gruppenpuzzle:</b> Jede:r in der Gruppe übernimmt zwei Zellen, wird Expert:in und stellt sie den anderen vor: <i>„Ich bin die … Meine Aufgabe ist …“</i></p>
+  <div class="raster" id="steckbriefe"></div>
+
+  <div class="spiel">
+    <h3>🧩 Gesamtablauf: Bring die Abwehr in die richtige Reihenfolge</h3>
+    <p>Tippe die Schritte in der richtigen Reihenfolge an. Bei einem Fehler wackelt die Karte.</p>
+    <ol class="ordnen" id="ordnenListe"></ol>
+    <p class="stand" id="ordnenInfo"></p>
+  </div>
+
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Vergleiche</span> humorale und zelluläre Immunantwort in einer Tabelle (Kriterien: beteiligte Zellen, Ziel, Wirkungsweise).
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div><table class="daten"><tr><th></th><th>humoral</th><th>zellulär</th></tr><tr><td>Zellen</td><td>B-Zellen → Plasmazellen</td><td>Killer-T-Zellen</td></tr><tr><td>Ziel</td><td>freie Erreger/Antigene in Blut &amp; Gewebeflüssigkeit</td><td>infizierte Körperzellen</td></tr><tr><td>Wirkung</td><td>Antikörper binden, verklumpen</td><td>Zellgift zerstört infizierte Zelle</td></tr><tr><td>Gemeinsam</td><td colspan="2">aktiviert durch T-Helferzellen, spezifisch, Gedächtniszellen</td></tr></table></div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Erkläre</span>, warum Mia beim zweiten Kontakt mit demselben Virus gesund bleibt. Verwende den Begriff <i>Gedächtniszelle</i>.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Nach der ersten Infektion bleiben Gedächtniszellen erhalten. Beim zweiten Kontakt erkennen sie das Antigen sofort; es werden viel schneller und mehr Antikörper bzw. Killer-T-Zellen gebildet. Die Erreger werden beseitigt, bevor Krankheitszeichen auftreten: Mia ist <b>immun</b>.</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">3</span><span class="stern">★★★ Profi</span> Das HI-Virus befällt vor allem T-Helferzellen. <span class="op">Begründe</span>, warum dadurch <i>beide</i> Wege der spezifischen Abwehr geschwächt werden.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>T-Helferzellen aktivieren sowohl B-Zellen (humoral) als auch Killer-T-Zellen (zellulär). Fallen sie aus, wird keine der beiden spezifischen Antworten richtig gestartet – auch harmlose Erreger werden gefährlich.</div></details>
+  </div>
+  <div class="kasten heft"><h4>📓 Ins Heft – Überblick</h4>Zeichne eine Übersicht „Immunsystem“ mit zwei Ästen: <b>unspezifisch</b> (Barrieren, Entzündung, Fresszellen) und <b>spezifisch</b> (humoral: B-Zellen/Antikörper · zellulär: Killer-T-Zellen), in der Mitte die <b>T-Helferzelle</b> als „Chefin“, unten die <b>Gedächtniszellen</b>.</div>
+  <div class="abschluss"><span>Mission 3 erledigt?</span><button class="btn hell" onclick="missionFertig('m3')">🧠 Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 4 ================= -->
+<section class="ansicht" id="v-m4"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#12b5a5,#1cd1a0)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 4 · ca. 45 Min.</span>
+    <h2>Impfen – Training ohne Risiko</h2>
+    <p>Wie kann man immun werden, ohne krank zu sein? Und warum schützt deine Impfung auch andere?</p>
+    <div class="meta"><span>📘 Bioskop S. 68–71</span><span>📈 Diagramm</span><span>🦠 Simulation</span><span>🤖 KI-Check</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>💉 Mai: Der Impfpass-Check</h4>Vor der Klassenfahrt kontrolliert die Lehrerin die Impfpässe. Bei Mia fehlt die <b>zweite Masernimpfung</b>. Ihr Kumpel Jonas sagt: „Masern? Die gibt's doch gar nicht mehr. Und überhaupt – lieber natürlich immun werden!“</div>
+
+  <h3>Ein gewagtes Experiment (1796)</h3>
+  <p>Der englische Arzt <b>Edward Jenner</b> bemerkte, dass Melkerinnen, die an harmlosen Kuhpocken erkrankt waren, nicht an den gefährlichen Pocken erkrankten. Er ritzte einem achtjährigen Jungen Kuhpocken-Material in die Haut – und später echte Pocken. Der Junge blieb gesund. Lies Bioskop S. 68–69.</p>
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Erkläre</span> Jenners Ergebnis mit deinem Wissen über Gedächtniszellen. Hinweis: Die Antigene von Kuh- und Menschenpocken sind sehr ähnlich.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Die Kuhpocken-Erreger lösten eine Immunreaktion aus; es entstanden Gedächtniszellen. Da die Antigene der echten Pocken ähnlich sind, erkannten die Gedächtniszellen sie sofort → schnelle Abwehr, keine Erkrankung.</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Bewerte</span> Jenners Vorgehen aus heutiger Sicht. Wäre so ein Experiment heute erlaubt? <span class="stern">★★ Ethik</span>
+    <details><summary>Hilfe: Perspektiven</summary><div>Denke an: Einwilligung (des Kindes? der Eltern?), Risiko, Nutzen für Millionen Menschen, heutige Regeln für Studien (Tierversuche, Probanden, Ethikkommission).</div></details>
+  </div>
+
+  <h3>📈 Interaktives Diagramm: Antikörper im Blut</h3>
+  <div class="spiel">
+    <div class="graph-btns">
+      <button data-k="k1">1. Kontakt / aktive Impfung</button>
+      <button data-k="k2">2. Kontakt (Gedächtnis)</button>
+      <button data-k="k3">passive Impfung</button>
+      <button data-k="sw">Schutzschwelle</button>
+    </div>
+    <svg viewBox="0 0 640 300" style="background:#fff;border-radius:12px;width:100%" role="img" aria-label="Diagramm der Antikörperkonzentration über die Zeit">
+      <line x1="60" y1="260" x2="620" y2="260" stroke="#333" stroke-width="2"/>
+      <line x1="60" y1="260" x2="60" y2="20" stroke="#333" stroke-width="2"/>
+      <text x="340" y="292" font-size="13" text-anchor="middle" fill="#333">Zeit in Wochen</text>
+      <text x="22" y="150" font-size="13" text-anchor="middle" fill="#333" transform="rotate(-90 22 150)">Antikörper-Konzentration</text>
+      <g font-size="11" fill="#666">
+        <text x="60" y="276" text-anchor="middle">0</text><text x="160" y="276" text-anchor="middle">2</text><text x="260" y="276" text-anchor="middle">4</text><text x="360" y="276" text-anchor="middle">6</text><text x="460" y="276" text-anchor="middle">8</text><text x="560" y="276" text-anchor="middle">10</text>
+      </g>
+      <g id="g-sw" class="weg aus"><line x1="60" y1="190" x2="620" y2="190" stroke="#ff5d5d" stroke-dasharray="6 6" stroke-width="2"/><text x="615" y="182" text-anchor="end" font-size="12" fill="#ff5d5d" font-weight="700">Schutz vor Erkrankung</text></g>
+      <path id="g-k1" class="kurve" stroke="#12b5a5" d="M60 258 C120 258 140 250 170 225 S230 180 250 182 S320 225 360 235 S400 240 400 240"/>
+      <path id="g-k2" class="kurve" stroke="#7b5cff" d="M360 240 C380 238 390 200 410 120 S440 50 470 60 S560 110 620 130"/>
+      <path id="g-k3" class="kurve" stroke="#f2a20c" d="M80 258 L84 70 C120 80 160 120 220 170 S330 245 420 255"/>
+      <g id="g-pfeile" font-size="12" font-weight="700">
+        <text x="60" y="16" fill="#12b5a5" class="weg aus" id="t-k1">▼ Impfung/Infektion (Woche 0)</text>
+        <text x="330" y="36" fill="#7b5cff" class="weg aus" id="t-k2">▼ 2. Kontakt (Woche 6)</text>
+        <text x="90" y="64" fill="#b07800" class="weg aus" id="t-k3">fertige Antikörper gespritzt</text>
+      </g>
+    </svg>
+    <p class="quelle" style="color:#cfd6f5">Schematische Darstellung (keine Messwerte), vgl. Bioskop S. 69.</p>
+  </div>
+  <div class="aufgabe"><span class="nr">3</span><span class="op">Werte</span> das Diagramm <span class="op">aus</span>: Vergleiche die Kurven nach dem 1. und 2. Kontakt (Zeitpunkt, Höhe, Dauer) und <span class="op">erläutere</span> den Unterschied zwischen aktiver und passiver Impfung.
+    <details><summary>Hilfe: Satzbausteine</summary><div><div class="satz"><span>Nach dem ersten Kontakt steigt die Konzentration erst nach … an.</span><span>Beim zweiten Kontakt dagegen …</span><span>Bei der passiven Impfung werden … gespritzt, deshalb …</span><span>Da keine Gedächtniszellen entstehen, …</span></div></div></details>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div><b>1. Kontakt:</b> Anstieg erst nach ca. 1–2 Wochen, eher niedriges Maximum, fällt wieder ab. <b>2. Kontakt:</b> sofortiger, steiler Anstieg, viel höheres Maximum, länger hoch → Gedächtniszellen. <b>Aktive Impfung</b> (abgeschwächte/abgetötete Erreger oder Bestandteile): Körper bildet selbst Antikörper und Gedächtniszellen → langer Schutz, aber verzögert. <b>Passive Impfung</b> (Heilimpfung, z. B. Tetanus-Antikörper nach Verletzung): fertige Antikörper → sofortiger Schutz, der aber nach Wochen endet, keine Gedächtniszellen.</div></details>
+  </div>
+
+  <h3>🦠 Simulation: Herdenschutz</h3>
+  <div class="spiel">
+    <div class="sim">
+      <canvas id="simCanvas" width="400" height="400" aria-label="Simulation einer Masern-Ausbreitung in einer Stadt mit 400 Menschen"></canvas>
+      <div>
+        <label for="impfRegler"><b>Impfquote: <span id="impfWert">70</span> %</b></label>
+        <input type="range" id="impfRegler" class="regler" min="0" max="100" value="70">
+        <div class="legende">
+          <span><i style="background:#3b4a8a"></i>ungeimpft, gesund</span>
+          <span><i style="background:#12b5a5"></i>geimpft</span>
+          <span><i style="background:#ffc23d"></i>Baby / kann nicht geimpft werden</span>
+          <span><i style="background:#ff5d5d"></i>krank</span>
+          <span><i style="background:#8a90a8"></i>genesen</span>
+        </div>
+        <div class="zahlen"><div><b id="zKrank">0</b>erkrankt</div><div><b id="zBaby">0</b>Babys erkrankt</div><div><b id="zTag">0</b>Woche</div></div>
+        <button class="btn klein" id="simStart">▶ Ausbruch starten</button>
+        <p style="font-size:.9rem;color:#cfd6f5;margin-top:.6rem">Ein kranker Mensch hat Kontakt zu Nachbarn und zufälligen anderen Personen. Masern sind extrem ansteckend: Ein Fall steckt ohne Schutz etwa 12–18 andere an.</p>
+      </div>
+    </div>
+  </div>
+  <div class="aufgabe"><span class="nr">4</span><span class="op">Untersuche</span> mit der Simulation: Ab welcher Impfquote bleiben die Babys meistens gesund? Teste jede Quote dreimal (30 %, 60 %, 80 %, 90 %, 95 %) und notiere die Ergebnisse in einer Tabelle.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Unter ca. 85–90 % breiten sich die Masern meist stark aus, auch die Babys erkranken. Ab etwa 95 % bleibt der Ausbruch fast immer klein. Das passt zur Empfehlung: Für Masern sollen mehr als 95 % der Bevölkerung geschützt sein. Wer sich impfen lässt, schützt also auch Menschen, die (noch) nicht geimpft werden können.</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">5</span><span class="op">Beurteile</span> die Simulation als Modell. <span class="stern">★★ Modellkritik</span>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Vereinfachungen: Impfung schützt hier zu 100 % (real ca. 97–99 % nach zwei Dosen), alle haben gleich viele Kontakte, keine Bewegung, keine Schulen/Familien, Zufall spielt große Rolle. Stärke: zeigt das Prinzip, dass ab einer kritischen Impfquote Infektionsketten abbrechen.</div></details>
+  </div>
+
+  <div class="kasten buch"><h4>📘 Fakten-Check zu Jonas' Aussage</h4>
+    <ul>
+      <li>Laut Bundesgesundheitsministerium kann eine Verbreitung der Masern verhindert werden, wenn <b>mehr als 95 %</b> der Bevölkerung geschützt sind; diese Quote wird bei der zweiten Impfung nur in einzelnen Bundesländern erreicht.</li>
+      <li>Masern können schwer verlaufen: In etwa einem von 1.000 Fällen kommt es zu einer Gehirnentzündung.</li>
+      <li>Seit dem <b>1. März 2020</b> gilt das <b>Masernschutzgesetz</b>: Kinder müssen beim Eintritt in Kita oder Schule einen Masernschutz nachweisen.</li>
+    </ul>
+    <p class="quelle">Quelle: <a href="https://www.bundesgesundheitsministerium.de/service/begriffe-von-a-z/m/masern.html" target="_blank" rel="noopener">Bundesgesundheitsministerium: Masern</a> · Impfempfehlungen der STIKO: <a href="https://www.impfen-info.de" target="_blank" rel="noopener">impfen-info.de</a></p>
+  </div>
+
+  <div class="kasten ki"><h4>🤖 KI-Check: Kann ich dem Chatbot trauen?</h4>
+    <p>Jonas hat einen KI-Chatbot gefragt: „Ist natürliche Immunität besser als Impfen?“ Die Antwort klang sehr überzeugend.</p>
+    <ol>
+      <li>Stellt einem Chatbot (falls erlaubt) dieselbe Frage – oder nutzt die Beispielantwort, die eure Lehrkraft zeigt.</li>
+      <li>Prüft die Antwort mit der <b>Quellen-Ampel</b>: 🟢 Nennt sie überprüfbare Quellen (RKI, STIKO, Ministerium)? 🟡 Sind Zahlen konkret und nachprüfbar? 🔴 Wird etwas weggelassen, z. B. das Risiko der Krankheit selbst?</li>
+      <li>Vergleicht mit <a href="https://www.impfen-info.de" target="_blank" rel="noopener">impfen-info.de</a>.</li>
+    </ol>
+    <p><b>Merke:</b> KI-Chatbots erzeugen wahrscheinlich klingende Texte – sie können sich irren oder Quellen erfinden. Gesundheitsinfos immer mit seriösen Quellen abgleichen!</p>
+  </div>
+
+  <div class="aufgabe"><span class="nr">6</span><span class="op">Nimm Stellung</span> zu Jonas' Aussage („Lieber natürlich immun werden!“). Schreibe eine kurze Antwort an Jonas (5–6 Sätze) mit mindestens zwei Fachargumenten.
+    <details><summary>Hilfe: Aufbau</summary><div>Behauptung von Jonas aufgreifen → Gemeinsamkeit (beides erzeugt Gedächtniszellen) → Unterschied (Risiko der Krankheit) → Herdenschutz → eigenes Fazit.</div></details>
+  </div>
+  <div class="kasten heft"><h4>📓 Ins Heft – Merksatz</h4><b>Aktive Immunisierung:</b> Impfstoff mit abgeschwächten/abgetöteten Erregern oder Antigenen → eigene Antikörper und Gedächtniszellen → langer Schutz. <b>Passive Immunisierung:</b> fertige Antikörper → sofort, aber nur kurz geschützt. Hohe Impfquoten erzeugen <b>Herdenschutz</b>.</div>
+  <div class="abschluss"><span>Mission 4 erledigt?</span><button class="btn hell" onclick="missionFertig('m4')">💉 Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 5 ================= -->
+<section class="ansicht" id="v-m5"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#f2a20c,#ffc23d);color:#3a2500">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip" style="color:#3a2500;border-color:rgba(0,0,0,.15)">MISSION 5 · ca. 45 Min.</span>
+    <h2>Fehlalarm: Allergie</h2>
+    <p>Birkenpollen sind völlig harmlos. Warum reagiert Mias Körper trotzdem, als würde er angegriffen?</p>
+    <div class="meta"><span style="background:rgba(0,0,0,.08)">📘 Bioskop S. 80–81</span><span style="background:rgba(0,0,0,.08)">🎬 Animation</span><span style="background:rgba(0,0,0,.08)">🃏 Sortierspiel</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>🌳 Juni: Heuschnupfen</h4>Letztes Jahr hatte Mia im Frühling keinerlei Beschwerden. Dieses Jahr jucken ihre Augen, die Nase läuft ständig, sie niest dauernd – immer dann, wenn sie draußen bei den Birken ist. Ihre Freundin Lea meint: „Du hast halt ein schwaches Immunsystem.“</div>
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Stelle</span> eine Hypothese <span class="op">auf</span>: Warum hatte Mia im ersten Jahr noch keine Beschwerden?</div>
+
+  <h3>🎬 Animation: Die allergische Reaktion in zwei Phasen</h3>
+  <div class="stepper" id="stAll">
+    <svg viewBox="0 0 700 320" role="img" aria-labelledby="allT">
+      <title id="allT">Sensibilisierung und allergische Reaktion</title>
+      <line x1="350" y1="10" x2="350" y2="310" stroke="#ddd" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="175" y="26" text-anchor="middle" font-size="14" font-weight="800" fill="#b07800">1. Kontakt: Sensibilisierung</text>
+      <text x="525" y="26" text-anchor="middle" font-size="14" font-weight="800" fill="#c0283a">2. Kontakt: allergische Reaktion</text>
+      <!-- Pollen 1 -->
+      <g class="s an" data-s="0">
+        <g fill="#ffc23d" stroke="#c98f00"><circle cx="60" cy="80" r="14"/><circle cx="55" cy="75" r="3" fill="#c98f00"/><circle cx="66" cy="84" r="3" fill="#c98f00"/></g>
+        <text x="30" y="112" font-size="12" font-weight="700" fill="#8a6d00">Birkenpollen (Allergen)</text>
+      </g>
+      <g class="s" data-s="1">
+        <circle cx="170" cy="90" r="22" fill="#2fb36d"/><text x="170" y="95" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">B</text>
+        <path d="M78 82 L144 88" stroke="#999" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="130" y="130" font-size="12" font-weight="700" fill="#1a7a48">B-Zelle → Plasmazellen</text>
+        <g stroke="#7b5cff" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M215 80 v10 M215 80 l-5 -6 M215 80 l5 -6"/><path d="M232 98 v10 M232 98 l-5 -6 M232 98 l5 -6"/><path d="M212 108 v10 M212 108 l-5 -6 M212 108 l5 -6"/>
+        </g>
+        <text x="200" y="70" font-size="12" font-weight="700" fill="#5a3ad1">IgE-Antikörper</text>
+      </g>
+      <g class="s" data-s="2">
+        <circle cx="175" cy="235" r="40" fill="#b48cff" stroke="#7b5cff" stroke-width="3"/>
+        <g fill="#5a3ad1"><circle cx="160" cy="225" r="4"/><circle cx="185" cy="222" r="4"/><circle cx="190" cy="245" r="4"/><circle cx="165" cy="250" r="4"/><circle cx="176" cy="236" r="4"/></g>
+        <g stroke="#7b5cff" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M175 195 v-12 M175 183 l-6 -7 M175 183 l6 -7"/><path d="M140 215 l-10 -6 M130 209 l-9 1 M130 209 l-2 -9"/><path d="M210 215 l10 -6 M220 209 l9 1 M220 209 l2 -9"/>
+        </g>
+        <text x="110" y="300" font-size="12" font-weight="700" fill="#5a3ad1">IgE sitzt auf Mastzellen – noch keine Symptome</text>
+      </g>
+      <!-- Phase 2 -->
+      <g class="s" data-s="3">
+        <circle cx="525" cy="200" r="40" fill="#b48cff" stroke="#7b5cff" stroke-width="3"/>
+        <g stroke="#7b5cff" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M525 160 v-12 M525 148 l-6 -7 M525 148 l6 -7"/><path d="M490 180 l-10 -6 M480 174 l-9 1 M480 174 l-2 -9"/><path d="M560 180 l10 -6 M570 174 l9 1 M570 174 l2 -9"/>
+        </g>
+        <g fill="#ffc23d" stroke="#c98f00"><circle cx="525" cy="128" r="11"/><circle cx="465" cy="160" r="11"/><circle cx="585" cy="160" r="11"/></g>
+        <text x="420" y="70" font-size="12" font-weight="700" fill="#8a6d00">Pollen verbinden die IgE-Antikörper</text>
+      </g>
+      <g class="s" data-s="4">
+        <g fill="#ffb800" class="puls"><circle cx="590" cy="230" r="5"/><circle cx="605" cy="210" r="5"/><circle cx="600" cy="255" r="5"/><circle cx="620" cy="240" r="5"/><circle cx="470" cy="250" r="5"/><circle cx="455" cy="225" r="5"/><circle cx="480" cy="270" r="5"/></g>
+        <text x="440" y="300" font-size="12" font-weight="800" fill="#b07800">Mastzelle schüttet Histamin aus!</text>
+      </g>
+      <g class="s" data-s="5" font-size="22">
+        <text x="630" y="110">🤧</text><text x="640" y="160">👁️</text><text x="630" y="290">💧</text>
+        <text x="380" y="110" font-size="12" font-weight="700" fill="#c0283a">Niesen, Juckreiz, Schwellung, Schleim</text>
+      </g>
+    </svg>
+    <div class="text" aria-live="polite"></div>
+    <div class="steuer"><button data-z>⟲</button><button data-p>◀ zurück</button><button data-n>weiter ▶</button><div class="punkte"></div></div>
+  </div>
+
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Erkläre</span> den Ablauf einer allergischen Reaktion. Überprüfe dabei deine Hypothese aus Aufgabe 1. (Bioskop S. 81 „Die allergische Reaktion“)
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Beim <b>ersten Kontakt</b> wird das eigentlich harmlose Allergen als fremd eingestuft; Plasmazellen bilden IgE-Antikörper, die sich an Mastzellen heften (<b>Sensibilisierung</b>, ohne Symptome – deshalb im ersten Jahr keine Beschwerden). Beim <b>erneuten Kontakt</b> bindet das Allergen an die IgE-Antikörper auf den Mastzellen; diese schütten schlagartig <b>Histamin</b> aus → Entzündungsreaktion: Schwellung, Juckreiz, Schleimbildung, Niesen.</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">3</span><span class="op">Vergleiche</span> die allergische Reaktion mit der Entzündung aus Mission 1. Was ist gleich, was ist anders?
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Gleich: Mastzellen, Histamin, erweiterte Gefäße, Schwellung. Anders: Auslöser ist ein harmloser Stoff, und die Reaktion ist spezifisch (Antikörper, Gedächtnis) – sie bringt keinen Nutzen, sondern schadet.</div></details>
+  </div>
+
+  <div class="spiel">
+    <h3>🃏 Allergie, Unverträglichkeit oder Infektion?</h3>
+    <p>Lea hält vieles für eine Allergie. Ordne jeden Fall richtig zu.</p>
+    <div class="sort" id="allergieItems"></div>
+  </div>
+
+  <div class="aufgabe"><span class="nr">4</span><span class="op">Nimm Stellung</span> zu Leas Satz „Du hast halt ein schwaches Immunsystem“.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Falsch: Bei einer Allergie reagiert das Immunsystem nicht zu schwach, sondern <b>überschießend</b> – es bekämpft einen harmlosen Stoff mit voller Kraft.</div></details>
+  </div>
+  <div class="kasten buch"><h4>🌐 Für den Alltag</h4>Der Deutsche Wetterdienst veröffentlicht täglich einen <a href="https://www.dwd.de/DE/leistungen/gefahrenindizespollen/gefahrenindexpollen.html" target="_blank" rel="noopener">Pollenflug-Gefahrenindex</a>. Informationen für Betroffene bietet der <a href="https://www.daab.de" target="_blank" rel="noopener">Deutsche Allergie- und Asthmabund</a>. <b>Wichtig:</b> Ob jemand eine Allergie hat, klärt ein Arzt oder eine Ärztin – kein Online-Test.</div>
+  <div class="kasten heft"><h4>📓 Ins Heft – Merksatz</h4>Eine <b>Allergie</b> ist eine <b>überschießende Immunreaktion</b> gegen harmlose Stoffe (<b>Allergene</b>). Beim ersten Kontakt erfolgt die <b>Sensibilisierung</b> (IgE an Mastzellen), bei jedem weiteren Kontakt die <b>allergische Reaktion</b> durch Histamin. Eine <b>Unverträglichkeit</b> wie die Lactoseintoleranz ist <i>keine</i> Immunreaktion (fehlendes Enzym Lactase).</div>
+  <div class="abschluss"><span>Mission 5 erledigt?</span><button class="btn hell" onclick="missionFertig('m5')">🌼 Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 6 ================= -->
+<section class="ansicht" id="v-m6"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#ff4fa3,#ff7ac0)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 6 · ca. 45 Min.</span>
+    <h2>Ein fremdes Organ</h2>
+    <p>Ein Spenderorgan rettet Leben – und doch kämpft das Immunsystem dagegen. Und: Wer soll eigentlich Organspender sein?</p>
+    <div class="meta"><span>📘 Bioskop S. 82–83</span><span>📊 Daten</span><span>⚖️ Positionslinie</span></div>
+  </div>
+
+  <div class="kasten fall"><h4>🫘 Herbst: Onkel Deniz</h4>Mias Onkel Deniz ist 44. Seine Nieren arbeiten fast nicht mehr; dreimal pro Woche muss er für mehrere Stunden zur Dialyse. Er steht auf der Warteliste für eine Spenderniere. Mia fragt sich: „Warum dauert das so lange? Und würde ich selbst spenden?“</div>
+
+  <h3>Warum stößt der Körper ein Organ ab?</h3>
+  <p>Jede Körperzelle trägt auf ihrer Oberfläche <b>Gewebemerkmale</b> – eine Art persönlicher Ausweis. Das Immunsystem kontrolliert ständig: <i>„Gehört diese Zelle zu mir?“</i> Lies Bioskop S. 82 („Abstoßungsreaktion“).</p>
+  <div class="aufgabe"><span class="nr">1</span><span class="op">Erkläre</span> die Abstoßung eines Spenderorgans mit den Begriffen Antigen, Killer-T-Zelle und Antikörper.
+    <details><summary>Hilfe</summary><div>Die Gewebemerkmale des Spenders wirken für den Empfänger wie … Welche Zellen greifen fremde Zellen direkt an?</div></details>
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Die Gewebemerkmale der Spenderzellen unterscheiden sich von denen des Empfängers und wirken als <b>Antigene</b>. Das Immunsystem erkennt sie als fremd: Killer-T-Zellen greifen die Organzellen an, Plasmazellen bilden Antikörper → das Organ wird geschädigt (Abstoßung).</div></details>
+  </div>
+  <div class="aufgabe"><span class="nr">2</span><span class="op">Erläutere</span>, warum Deniz nach einer Transplantation lebenslang Medikamente nehmen muss, die das Immunsystem unterdrücken – und welches neue Risiko dadurch entsteht.
+    <details class="loesung"><summary>Lösung zur Selbstkontrolle</summary><div>Immunsuppressiva verhindern die Abstoßung, indem sie die Abwehr dämpfen. Dadurch ist er aber anfälliger für Infektionen – schon eine Erkältung kann gefährlich werden. Deshalb: möglichst gut passende Gewebemerkmale, Hygiene, Impfschutz im Umfeld (Herdenschutz! → Mission 4).</div></details>
+  </div>
+
+  <h3>📊 Daten: Organspende in Deutschland</h3>
+  <div class="raster">
+    <div class="karte" style="text-align:center"><div style="font-size:2.4rem;font-weight:800;color:var(--m6)">985</div>Menschen spendeten 2025 nach ihrem Tod Organe – höchster Stand seit 2012</div>
+    <div class="karte" style="text-align:center"><div style="font-size:2.4rem;font-weight:800;color:var(--m6)">3.256</div>Organe wurden 2025 in Deutschland transplantiert</div>
+    <div class="karte" style="text-align:center"><div style="font-size:2.4rem;font-weight:800;color:var(--m6)">8.202</div>Menschen standen im April 2026 auf der aktiven Warteliste</div>
+  </div>
+  <p class="quelle">Quellen: <a href="https://dso.de/SiteCollectionDocuments/DSO-Jahresbericht_2025.pdf" target="_blank" rel="noopener">DSO-Jahresbericht 2025</a>; ZDFheute, 2026. Hinweis: Ein Teil der transplantierten Organe stammt aus dem Ausland.</p>
+  <div class="aufgabe"><span class="nr">3</span><span class="op">Werte</span> die Zahlen <span class="op">aus</span>: Was bedeuten sie für Menschen wie Deniz? Nutze auch die Tabelle zur Niere in Bioskop S. 83.</div>
+
+  <h3>⚖️ Die große Frage: Wer ist Organspender?</h3>
+  <div class="zwei">
+    <div class="karte" style="border-top:6px solid var(--blau)"><h4 style="margin-top:0">Entscheidungslösung (gilt derzeit)</h4>Organe dürfen nur entnommen werden, wenn die verstorbene Person zu Lebzeiten <b>zugestimmt</b> hat (Ausweis, Online-Register) oder die Angehörigen in ihrem Sinne zustimmen.</div>
+    <div class="karte" style="border-top:6px solid var(--m6)"><h4 style="margin-top:0">Widerspruchslösung (wird diskutiert)</h4>Jeder Erwachsene gilt als Organspender, <b>außer</b> er hat zu Lebzeiten <b>widersprochen</b>. Fast alle Nachbarländer nutzen diese Regel.</div>
+  </div>
+  <div class="kasten buch"><h4>📰 Aktuell (Stand: November 2026)</h4>Der Bundestag berät gerade über die Widerspruchslösung: Am 24. September 2026 fand die erste Lesung statt, im November eine Anhörung von Fachleuten. Eine Entscheidung steht noch aus – die Abgeordneten stimmen ohne Fraktionszwang nach ihrem Gewissen ab. 2020 hatte der Bundestag die Widerspruchslösung abgelehnt.<p class="quelle">Quellen: <a href="https://www.bundestag.de/dokumente/textarchiv/2026/kw39-de-transplantationsgesetz-1211264" target="_blank" rel="noopener">Deutscher Bundestag</a> · <a href="https://www.organspende-info.de" target="_blank" rel="noopener">organspende-info.de</a> · Verständlich erklärt: <a href="https://www.bundestag.de/resource/blob/1192486/307_organspende.pdf" target="_blank" rel="noopener">Bundestag in Leichter Sprache</a></p></div>
+
+  <div class="karte">
+    <h3 style="margin-top:0">📍 Positionslinie – vorher</h3>
+    <p>„In Deutschland sollte die Widerspruchslösung eingeführt werden.“</p>
+    <input type="range" min="1" max="5" value="3" class="regler" id="posVor" aria-label="Position vorher">
+    <div class="linie"><span>stimme gar nicht zu</span><span>unentschieden</span><span>stimme voll zu</span></div>
+  </div>
+
+  <div class="spiel">
+    <h3>🗂️ Argumente sortieren: Pro oder Contra Widerspruchslösung?</h3>
+    <div class="sort" id="argItems"></div>
+  </div>
+
+  <div class="aufgabe"><span class="nr">4</span><span class="op">Beurteile</span> die beiden Regelungen. Gehe dabei nach dem Bewertungsschema vor:
+    <ol><li>Sachlage: Worum geht es? (Daten)</li><li>Werte: Welche Werte stehen sich gegenüber? (z. B. Selbstbestimmung ↔ Hilfe für andere/Leben retten)</li><li>Handlungsoptionen mit Folgen</li><li>Eigenes, begründetes Urteil</li></ol>
+    <details><summary>Hilfe: Formulierungen für ein Urteil</summary><div><div class="satz"><span>Für die … spricht, dass …</span><span>Dagegen lässt sich einwenden, dass …</span><span>Besonders wichtig ist mir …, weil …</span><span>Abwägend komme ich zu dem Schluss, dass …</span></div></div></details>
+  </div>
+  <div class="karte">
+    <h3 style="margin-top:0">📍 Positionslinie – nachher</h3>
+    <input type="range" min="1" max="5" value="3" class="regler" id="posNach" aria-label="Position nachher">
+    <div class="linie"><span>stimme gar nicht zu</span><span>unentschieden</span><span>stimme voll zu</span></div>
+    <p id="posInfo" class="fb"></p>
+  </div>
+  <div class="kasten ziel"><h4>💡 Wusstest du?</h4>Schon ab <b>16 Jahren</b> kannst du in Deutschland erklären, dass du Organspender sein möchtest, ab <b>14</b> kannst du widersprechen – mit Ausweis oder im <a href="https://www.organspende-register.de" target="_blank" rel="noopener">Organspende-Register</a>. Ob und wie du dich entscheidest, ist deine freie Entscheidung. Rede darüber mit deiner Familie.</div>
+  <div class="kasten heft"><h4>📓 Ins Heft – Merksatz</h4>Spenderorgane tragen fremde <b>Gewebemerkmale (Antigene)</b> → spezifische Immunreaktion → <b>Abstoßung</b>. Dagegen helfen möglichst gut passende Spender und <b>Immunsuppressiva</b> (Folge: höhere Infektionsgefahr). Dazu: dein begründetes Urteil zur Organspende-Regelung.</div>
+  <div class="abschluss"><span>Mission 6 erledigt?</span><button class="btn hell" onclick="missionFertig('m6')">⚖️ Mission abschließen (+30 XP)</button></div>
+</main></section>
+
+<!-- ================= MISSION 7 ================= -->
+<section class="ansicht" id="v-m7"><main>
+  <div class="mkopf" style="background:linear-gradient(135deg,#2fb36d,#5fd38f)">
+    <svg class="deko" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff"/></svg>
+    <span class="chip">MISSION 7 · ca. 45 Min.</span>
+    <h2>Check-out</h2>
+    <p>Zeig, was du kannst – und schau, wie sich dein Denken verändert hat.</p>
+    <div class="meta"><span>📝 Abschlusstest</span><span>🔁 Check-in-Vergleich</span><span>📊 Kompetenzraster</span></div>
+  </div>
+
+  <h3>🏅 Deine Abzeichen</h3>
+  <div class="abzeichen" id="abzeichen"></div>
+
+  <h3>📝 Abschlusstest (12 Fragen)</h3>
+  <div class="karte quiz" id="quiz"></div>
+  <div class="karte"><b>Ergebnis: <span id="quizErg">0</span> / 12</b><div class="balken" style="margin-top:.5rem"><i id="quizBalken"></i></div><p id="quizText" class="fb"></p></div>
+
+  <h3>🔁 Check-in-Vergleich: Hat sich dein Denken verändert?</h3>
+  <div class="karte">
+    <p>Beantworte die Aussagen vom Anfang erneut. Danach siehst du deine Antworten von vorher, jetzt und die fachlich richtige Lösung.</p>
+    <div id="checkoutListe"></div>
+    <p><button class="btn klein" onclick="checkoutAuswerten()">Vergleich anzeigen</button></p>
+    <div id="vergleich"></div>
+  </div>
+
+  <h3>📊 Kompetenzraster: Wie sicher bist du?</h3>
+  <div class="karte">
+    <table class="kraster" id="kraster"></table>
+    <p class="quelle">😀 sicher · 🙂 meistens · 😕 noch unsicher → Bei 😕 findest du den Weg zurück zur passenden Mission.</p>
+  </div>
+
+  <div class="kasten heft"><h4>📓 Ins Heft – Reflexion</h4>
+    <ol><li>Das Wichtigste, das ich gelernt habe: …</li><li>Meine Vorstellung, die sich am stärksten verändert hat: Früher dachte ich …, jetzt weiß ich …</li><li>Daran muss ich noch arbeiten: …</li><li>Erstelle eine <b>Concept-Map</b> mit mindestens 12 Begriffen aus dem Glossar.</li></ol>
+  </div>
+  <div class="abschluss"><span>Alles erledigt? Dann bist du Immun-Expert:in!</span><button class="btn hell" onclick="missionFertig('m7')">🏆 Reihe abschließen (+50 XP)</button></div>
+  <p style="text-align:center;margin-top:1rem"><button class="btn leise klein" onclick="allesZuruecksetzen()">Fortschritt auf diesem Gerät zurücksetzen</button></p>
+</main></section>
+
+<!-- ================= GLOSSAR ================= -->
+<section class="ansicht" id="v-glossar"><main>
+  <h2>📖 Glossar</h2>
+  <input id="glossarSuche" type="search" placeholder="Begriff suchen …" aria-label="Glossar durchsuchen">
+  <div class="glossar" id="glossarListe" style="margin-top:1rem"></div>
+  <h2>📚 Quellen &amp; Weiterlesen</h2>
+  <ul>
+    <li>Bioskop 3 (Westermann), Kapitel 4.5, 4.6, 4.9, 4.10</li>
+    <li><a href="https://www.impfen-info.de" target="_blank" rel="noopener">impfen-info.de</a> – Informationen zu Impfungen</li>
+    <li><a href="https://www.bundesgesundheitsministerium.de/service/begriffe-von-a-z/m/masern.html" target="_blank" rel="noopener">Bundesgesundheitsministerium: Masern</a></li>
+    <li><a href="https://www.organspende-info.de" target="_blank" rel="noopener">organspende-info.de</a> und <a href="https://www.organspende-register.de" target="_blank" rel="noopener">Organspende-Register</a></li>
+    <li><a href="https://dso.de/SiteCollectionDocuments/DSO-Jahresbericht_2025.pdf" target="_blank" rel="noopener">Deutsche Stiftung Organtransplantation: Jahresbericht 2025</a></li>
+    <li><a href="https://www.bundestag.de/dokumente/textarchiv/2026/kw39-de-transplantationsgesetz-1211264" target="_blank" rel="noopener">Bundestag: Debatte zur Widerspruchslösung (2026)</a></li>
+    <li><a href="https://www.dwd.de/DE/leistungen/gefahrenindizespollen/gefahrenindexpollen.html" target="_blank" rel="noopener">DWD: Pollenflug-Gefahrenindex</a> · <a href="https://www.daab.de" target="_blank" rel="noopener">Deutscher Allergie- und Asthmabund</a></li>
+  </ul>
+  <div class="kasten ki"><h4>🔍 Medienkritik – die 4 Fragen an jede Quelle</h4><b>Wer</b> steckt dahinter? <b>Was</b> ist belegt? <b>Wann</b> wurde es veröffentlicht? <b>Warum</b> wurde es veröffentlicht (informieren, verkaufen, überzeugen)?</div>
+</main></section>
+
+<footer>Operation Abwehr · Biologie Jg. 10 · Patrick Hafner · Kaiserin-Augusta-Schule Köln · <a href="../../impressum.html">Impressum</a> · <a href="../../datenschutz.html">Datenschutz</a><br>Dein Fortschritt wird nur lokal auf diesem Gerät gespeichert.</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- Speicher ---------- */
+const SPEICHER='immun10_v1';
+let zustand={xp:0,fertig:{},checkin:{},checkout:{},raster:{},spiele:{},quiz:{}};
+try{const s=localStorage.getItem(SPEICHER);if(s)zustand=Object.assign(zustand,JSON.parse(s));}catch(e){}
+function speichern(){try{localStorage.setItem(SPEICHER,JSON.stringify(zustand));}catch(e){}}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('zeigen');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('zeigen'),2400);}
+function xp(n,schluessel){if(schluessel){if(zustand.spiele[schluessel])return;zustand.spiele[schluessel]=1;}zustand.xp+=n;speichern();xpZeigen();toast('⚡ +'+n+' XP');}
+function xpZeigen(){document.getElementById('xpWert').textContent=zustand.xp;
+  document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('fertig',!!zustand.fertig[a.dataset.v]));
+  document.querySelectorAll('.mkarte').forEach(a=>a.classList.toggle('fertig',!!zustand.fertig[a.dataset.m]));
+  abzeichenZeigen();}
+function missionFertig(m){if(!zustand.fertig[m]){zustand.fertig[m]=1;zustand.xp+=(m==='m7'?50:30);speichern();xpZeigen();toast('🏅 Abzeichen freigeschaltet!');}else toast('Schon erledigt ✓');}
+function allesZuruecksetzen(){if(!confirmZurueck())return;zustand={xp:0,fertig:{},checkin:{},checkout:{},raster:{},spiele:{},quiz:{}};speichern();location.reload();}
+function confirmZurueck(){const b=document.querySelector('[onclick="allesZuruecksetzen()"]');if(b.dataset.sicher){return true;}b.dataset.sicher=1;b.textContent='Wirklich zurücksetzen? Nochmal tippen';return false;}
+
+/* ---------- Navigation ---------- */
+function zeige(){let h=(location.hash||'#start').slice(1);let ziel=null;
+  if(!document.getElementById('v-'+h)){ziel=h;h='start';}
+  document.querySelectorAll('.ansicht').forEach(v=>v.classList.toggle('zeigen',v.id==='v-'+h));
+  document.querySelectorAll('#tabs a').forEach(a=>{a.classList.toggle('aktiv',a.dataset.v===h);if(a.dataset.v===h)a.scrollIntoView({inline:'center',block:'nearest'});});
+  if(ziel&&document.getElementById(ziel))document.getElementById(ziel).scrollIntoView();else window.scrollTo(0,0);}
+window.addEventListener('hashchange',zeige);
+
+/* ---------- Check-in ---------- */
+const aussagen=[
+ ['Fieber zeigt, dass das Immunsystem versagt.',false,'Fieber ist eine Abwehrreaktion: Erhöhte Temperatur hemmt viele Erreger und beschleunigt Abwehrvorgänge.'],
+ ['Antikörper sind Zellen, die Erreger auffressen.',false,'Antikörper sind Eiweißmoleküle (Proteine), die von Plasmazellen gebildet werden. Fressen tun Makrophagen.'],
+ ['Eiter besteht zu einem großen Teil aus abgestorbenen Abwehrzellen.',true,'Richtig – Eiter enthält tote Fresszellen, Erreger und Gewebereste.'],
+ ['Nach einer Impfung ist man sofort geschützt.',false,'Bei der aktiven Impfung dauert es etwa 1–2 Wochen, bis genug Antikörper und Gedächtniszellen gebildet sind.'],
+ ['Wer sich impfen lässt, schützt auch andere.',true,'Richtig – hohe Impfquoten unterbrechen Infektionsketten (Herdenschutz).'],
+ ['Menschen mit Allergien haben ein schwaches Immunsystem.',false,'Bei Allergien reagiert das Immunsystem überschießend gegen harmlose Stoffe.'],
+ ['Lactoseintoleranz ist eine Allergie.',false,'Bei der Lactoseintoleranz fehlt das Enzym Lactase – das Immunsystem ist nicht beteiligt.'],
+ ['Das Immunsystem erkennt ein Spenderorgan als fremd.',true,'Richtig – fremde Gewebemerkmale wirken als Antigene und lösen eine Abstoßung aus.']
+];
+function aussagenListe(ziel,feld){const el=document.getElementById(ziel);el.innerHTML='';
+  aussagen.forEach((a,i)=>{const d=document.createElement('div');d.className='aussage';
+    d.innerHTML='<span>'+(i+1)+'. '+a[0]+'</span><div class="wahl" role="group">'+['stimmt','stimmt nicht','weiß nicht'].map(w=>'<button data-w="'+w+'">'+w+'</button>').join('')+'</div>';
+    d.querySelectorAll('button').forEach(b=>{if(zustand[feld][i]===b.dataset.w)b.classList.add('an');
+      b.onclick=()=>{d.querySelectorAll('button').forEach(x=>x.classList.remove('an'));b.classList.add('an');zustand[feld][i]=b.dataset.w;speichern();};});
+    el.appendChild(d);});}
+function checkinSpeichern(){const n=Object.keys(zustand.checkin).length;if(n<aussagen.length){document.getElementById('checkinInfo').textContent='Noch '+(aussagen.length-n)+' Aussage(n) offen.';return;}
+  document.getElementById('checkinInfo').textContent='Gespeichert! Du findest den Vergleich in Mission 7.';xp(20,'checkin');}
+function checkoutAuswerten(){let h='<table class="vergleich"><tr><th>Aussage</th><th>vorher</th><th>jetzt</th><th>fachlich</th></tr>';let richtig=0;
+  aussagen.forEach((a,i)=>{const soll=a[1]?'stimmt':'stimmt nicht';const jetzt=zustand.checkout[i]||'–';if(jetzt===soll)richtig++;
+    h+='<tr><td>'+a[0]+'<br><small style="color:var(--grau)">'+a[2]+'</small></td><td>'+(zustand.checkin[i]||'–')+'</td><td class="'+(jetzt===soll?'ok':'nok')+'">'+jetzt+'</td><td><b>'+soll+'</b></td></tr>';});
+  h+='</table><p class="fb">'+richtig+' von '+aussagen.length+' jetzt fachlich richtig.</p>';document.getElementById('vergleich').innerHTML=h;if(richtig>=6)xp(20,'checkout');}
+
+/* ---------- Stepper ---------- */
+function stepper(id,texte){const box=document.getElementById(id);let i=0;const n=texte.length;
+  const punkte=box.querySelector('.punkte');punkte.innerHTML=texte.map(()=>'<i></i>').join('');
+  function setze(){box.querySelectorAll('.s').forEach(e=>e.classList.toggle('an',+e.dataset.s<=i));
+    box.querySelectorAll('.weg[data-aus]').forEach(e=>e.classList.toggle('aus',i>=+e.dataset.aus));
+    box.querySelector('.text').innerHTML='<b>Schritt '+(i+1)+'/'+n+':</b> '+texte[i];
+    punkte.querySelectorAll('i').forEach((p,k)=>p.classList.toggle('an',k<=i));
+    box.querySelector('[data-p]').disabled=i===0;box.querySelector('[data-n]').disabled=i===n-1;
+    if(i===n-1)xp(10,'anim_'+id);
+    if(box._onstep)box._onstep(i);}
+  box.querySelector('[data-n]').onclick=()=>{if(i<n-1){i++;setze();}};
+  box.querySelector('[data-p]').onclick=()=>{if(i>0){i--;setze();}};
+  box.querySelector('[data-z]').onclick=()=>{i=0;setze();};
+  setze();return box;}
+
+/* ---------- Mini-Spiel: Sortieren mit Buttons ---------- */
+function sortSpiel(ziel,kategorien,items,schluessel){const el=document.getElementById(ziel);let geschafft=0;
+  items.forEach(it=>{const d=document.createElement('div');d.className='item';
+    d.innerHTML='<span>'+it[0]+'</span>'+kategorien.map(k=>'<button>'+k+'</button>').join('')+'<div class="erkl">'+it[2]+'</div>';
+    d.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(d.classList.contains('richtig'))return;
+      if(b.textContent===it[1]){d.classList.remove('falsch');d.classList.add('richtig');geschafft++;if(geschafft===items.length)xp(15,schluessel);}
+      else{d.classList.remove('falsch');void d.offsetWidth;d.classList.add('falsch');}});
+    el.appendChild(d);});}
+
+/* ---------- Passt-Spiel ---------- */
+const formen={
+  dreieck:{bump:'M50 30 L60 12 L70 30',cup:'M-16 0 H-10 L0 16 L10 0 H16'},
+  rund:{bump:'M50 30 A10 10 0 0 1 70 30',cup:'M-16 0 H-10 A10 10 0 0 0 10 0 H16'},
+  eckig:{bump:'M50 30 V14 H70 V30',cup:'M-16 0 H-10 V15 H10 V0 H16'},
+  zacke:{bump:'M50 30 L55 16 L60 26 L65 16 L70 30',cup:'M-16 0 H-10 L-5 14 L0 4 L5 14 L10 0 H16'}
+};
+const fNamen=Object.keys(formen);let sRunde=0,sTreffer=0,sAktuell=null,sGesperrt=false;
+function antigenZeichnen(f){document.getElementById('antigenBild').innerHTML='<rect x="20" y="30" width="80" height="70" rx="20" fill="#ff7a7a"/><path d="'+formen[f].bump+' Z" fill="#e2384a" stroke="#e2384a" stroke-width="2"/><text x="60" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Antigen</text>';}
+function antikoerperSvg(f){const c=formen[f].cup;return '<svg viewBox="0 0 100 100" width="96" height="96"><g fill="none" stroke="#7b5cff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 96 V66 L28 50 V36 M50 66 L72 50 V36"/><g transform="translate(28 36)"><path d="'+c+'"/></g><g transform="translate(72 36)"><path d="'+c+'"/></g></g></svg>';}
+function schlossNeu(){if(sRunde>=5){document.getElementById('schlossOpts').innerHTML='<p style="font-weight:700">Geschafft! '+sTreffer+'/5 im ersten Versuch. Genau so „sucht“ dein Körper unter Millionen B-Zellen die eine passende aus.</p>';xp(15,'schloss');return;}
+  sGesperrt=false;sAktuell=fNamen[Math.floor(Math.random()*4)];antigenZeichnen(sAktuell);
+  document.getElementById('schlossRunde').textContent=sRunde+1;
+  const opts=document.getElementById('schlossOpts');opts.innerHTML='';let ersterVersuch=true;
+  fNamen.slice().sort(()=>Math.random()-.5).forEach(f=>{const b=document.createElement('button');b.innerHTML=antikoerperSvg(f);b.setAttribute('aria-label','Antikörper '+f);
+    b.onclick=()=>{if(sGesperrt)return;if(f===sAktuell){b.classList.add('richtig');sGesperrt=true;if(ersterVersuch)sTreffer++;document.getElementById('schlossTreffer').textContent=sTreffer;sRunde++;setTimeout(schlossNeu,900);}
+      else{ersterVersuch=false;b.classList.remove('falsch');void b.offsetWidth;b.classList.add('falsch');}};opts.appendChild(b);});}
+
+/* ---------- Reihenfolge ---------- */
+const ablauf=['Erreger überwinden Haut oder Schleimhaut','Fresszellen nehmen Erreger auf und präsentieren Antigene','T-Helferzellen erkennen das Antigen und werden aktiviert','T-Helferzellen aktivieren passende B-Zellen und Killer-T-Zellen','B-Zellen werden zu Plasmazellen und bilden Antikörper; Killer-T-Zellen zerstören infizierte Zellen','Antigen-Antikörper-Komplexe verklumpen und werden von Fresszellen beseitigt','Gedächtniszellen bleiben zurück – du bist immun'];
+function ordnenStart(){const ol=document.getElementById('ordnenListe');ol.innerHTML='';let naechster=0;
+  ablauf.map((t,i)=>[t,i]).sort(()=>Math.random()-.5).forEach(([t,i])=>{const li=document.createElement('li');const b=document.createElement('button');b.innerHTML='<span class="pos">?</span>'+t;
+    b.onclick=()=>{if(b.classList.contains('gesetzt'))return;if(i===naechster){b.classList.add('gesetzt');b.querySelector('.pos').textContent=i+1;naechster++;
+        if(naechster===ablauf.length){document.getElementById('ordnenInfo').textContent='🎉 Perfekt! Der komplette Ablauf sitzt.';xp(20,'ordnen');}}
+      else{b.classList.remove('falsch');void b.offsetWidth;b.classList.add('falsch');document.getElementById('ordnenInfo').textContent='Noch nicht – was passiert direkt nach Schritt '+naechster+'?';}};
+    li.appendChild(b);ol.appendChild(li);});}
+
+/* ---------- Steckbriefe ---------- */
+const zellen=[
+ ['🫧','Fresszelle (Makrophage)','unspezifisch','Ich patrouilliere im Gewebe, nehme Erreger auf und verdaue sie (Phagocytose). Danach präsentiere ich Bruchstücke (Antigene) auf meiner Oberfläche und alarmiere die T-Helferzellen.'],
+ ['⭐','T-Helferzelle','spezifisch – Steuerung','Ich bin die Chefin. Ich erkenne präsentierte Antigene und aktiviere mit Botenstoffen die passenden B-Zellen und Killer-T-Zellen.'],
+ ['🟢','B-Zelle','spezifisch – humoral','Ich trage Rezeptoren für genau ein Antigen. Werde ich aktiviert, teile ich mich in Plasmazellen und Gedächtniszellen.'],
+ ['🏭','Plasmazelle','spezifisch – humoral','Ich bin eine Antikörper-Fabrik: Tausende Antikörper pro Sekunde, alle passend zu einem Antigen.'],
+ ['🗡️','Killer-T-Zelle','spezifisch – zellulär','Ich erkenne Körperzellen, die von Viren befallen sind, an den Antigenen auf ihrer Oberfläche und zerstöre sie mit Zellgiften.'],
+ ['💾','Gedächtniszelle','spezifisch – Gedächtnis','Ich lebe jahrelang. Taucht „mein“ Antigen wieder auf, starte ich sofort eine schnelle, starke Abwehr. Ich bin der Grund, warum Impfungen funktionieren.']
+];
+function steckbriefe(){const el=document.getElementById('steckbriefe');let gedreht=new Set();
+  zellen.forEach((z,i)=>{const d=document.createElement('div');d.className='flip';d.tabIndex=0;d.setAttribute('role','button');
+    d.innerHTML='<div class="innen"><div class="vorne"><span style="font-size:2.4rem">'+z[0]+'</span><b>'+z[1]+'</b><small>'+z[2]+'</small></div><div class="hinten"><b>'+z[1]+'</b><p style="margin:.4rem 0 0">'+z[3]+'</p></div></div>';
+    const um=()=>{d.classList.toggle('um');gedreht.add(i);if(gedreht.size===zellen.length)xp(10,'steckbriefe');};
+    d.onclick=um;d.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();um();}};el.appendChild(d);});}
+
+/* ---------- Diagramm ---------- */
+function diagramm(){document.querySelectorAll('.graph-btns button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;b.classList.toggle('an');const an=b.classList.contains('an');
+  if(k==='sw')document.getElementById('g-sw').classList.toggle('aus',!an);
+  else{document.getElementById('g-'+k).classList.toggle('an',an);document.getElementById('t-'+k).classList.toggle('aus',!an);}
+  if(document.querySelectorAll('.graph-btns button.an').length===4)xp(10,'diagramm');});}
+
+/* ---------- Herdenschutz-Simulation ---------- */
+function simulation(){const cv=document.getElementById('simCanvas');const ctx=cv.getContext('2d');const N=20,Z=N*N,gr=cv.width/N;
+  const regler=document.getElementById('impfRegler');let pop=[],timer=null,woche=0;
+  const farben={S:'#3b4a8a',V:'#12b5a5',B:'#ffc23d',I:'#ff5d5d',R:'#8a90a8',BI:'#ff5d5d'};
+  function aufbauen(){const q=+regler.value/100;pop=[];for(let i=0;i<Z;i++){let baby=Math.random()<.04;pop.push({st:baby?'S':(Math.random()<q?'V':'S'),baby,t:0,warKrank:false});}woche=0;zeichnen();zahlen();}
+  function zeichnen(){ctx.clearRect(0,0,cv.width,cv.height);pop.forEach((p,i)=>{const x=(i%N)*gr,y=Math.floor(i/N)*gr;let f=p.st==='I'?farben.I:p.st==='R'?farben.R:p.st==='V'?farben.V:(p.baby?farben.B:farben.S);
+    ctx.fillStyle=f;ctx.beginPath();ctx.arc(x+gr/2,y+gr/2,gr*.38,0,7);ctx.fill();if(p.baby&&p.st!=='S'){ctx.strokeStyle='#ffc23d';ctx.lineWidth=2.5;ctx.stroke();}});}
+  function zahlen(){document.getElementById('zKrank').textContent=pop.filter(p=>p.warKrank).length;document.getElementById('zBaby').textContent=pop.filter(p=>p.baby&&p.warKrank).length+' / '+pop.filter(p=>p.baby).length;document.getElementById('zTag').textContent=woche;}
+  function nachbarn(i){const x=i%N,y=Math.floor(i/N),r=[];[[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const a=x+dx,b=y+dy;if(a>=0&&a<N&&b>=0&&b<N)r.push(b*N+a);});for(let k=0;k<4;k++)r.push(Math.floor(Math.random()*Z));return r;}
+  function schritt(){const neu=[];pop.forEach((p,i)=>{if(p.st==='I'){nachbarn(i).forEach(j=>{if(pop[j].st==='S'&&Math.random()<.9)neu.push(j);});p.t++;if(p.t>=2)p.st='R';}});
+    neu.forEach(j=>{if(pop[j].st==='S'){pop[j].st='I';pop[j].warKrank=true;}});woche++;zeichnen();zahlen();
+    if(!pop.some(p=>p.st==='I')){clearInterval(timer);timer=null;document.getElementById('simStart').textContent='▶ Neuer Ausbruch';xp(15,'sim');}}
+  document.getElementById('simStart').onclick=()=>{if(timer)clearInterval(timer);aufbauen();const s=pop.findIndex((p,i)=>p.st==='S'&&!p.baby&&i>150);const start=s<0?pop.findIndex(p=>p.st==='S'):s;
+    if(start<0){zahlen();return;}pop[start].st='I';pop[start].warKrank=true;zeichnen();zahlen();document.getElementById('simStart').textContent='⏳ läuft …';timer=setInterval(schritt,550);};
+  regler.oninput=()=>{document.getElementById('impfWert').textContent=regler.value;if(!timer)aufbauen();};aufbauen();}
+
+/* ---------- Positionslinie ---------- */
+function positionen(){['posVor','posNach'].forEach(id=>{const r=document.getElementById(id);if(zustand.spiele[id])r.value=zustand.spiele[id];
+  r.oninput=()=>{zustand.spiele[id]=r.value;speichern();posInfo();};});posInfo();}
+function posInfo(){const v=+document.getElementById('posVor').value,n=+document.getElementById('posNach').value;const t=document.getElementById('posInfo');
+  t.textContent=v===n?'Deine Position ist gleich geblieben – kannst du sie jetzt besser begründen?':'Deine Position hat sich um '+Math.abs(n-v)+' Stufe(n) verschoben. Welches Argument hat dich überzeugt?';}
+
+/* ---------- Quiz ---------- */
+const fragen=[
+ ['Welche Abwehr wirkt sofort und gegen alle Erreger gleich?',['spezifische Abwehr','unspezifische Abwehr','passive Impfung'],1,'Barrieren, Entzündung und Fresszellen gehören zur unspezifischen Abwehr.','m1'],
+ ['Welcher Botenstoff erweitert bei einer Entzündung die Blutgefäße?',['Insulin','Histamin','Adrenalin'],1,'Histamin wird von Mastzellen freigesetzt.','m1'],
+ ['Was sind Antikörper?',['Abwehrzellen, die Erreger fressen','Eiweißmoleküle, die an Antigene binden','abgeschwächte Erreger'],1,'Antikörper sind Proteine, gebildet von Plasmazellen.','m2'],
+ ['Welche Zellen bilden Antikörper?',['Plasmazellen','Killer-T-Zellen','Makrophagen'],0,'Aktivierte B-Zellen werden zu Plasmazellen.','m2'],
+ ['Das Schlüssel-Schloss-Prinzip beschreibt, dass …',['jeder Antikörper zu jedem Antigen passt','ein Antikörper nur zu einem bestimmten Antigen passt','Fresszellen Türen öffnen'],1,'Antikörper sind spezifisch.','m2'],
+ ['Welche Zelle zerstört virusinfizierte Körperzellen?',['B-Zelle','Killer-T-Zelle','rote Blutzelle'],1,'Das ist die zelluläre Immunantwort.','m3'],
+ ['Welche Zelle aktiviert sowohl B-Zellen als auch Killer-T-Zellen?',['T-Helferzelle','Gedächtniszelle','Mastzelle'],0,'Die T-Helferzelle steuert die spezifische Abwehr.','m3'],
+ ['Warum erkrankt man an manchen Krankheiten nur einmal?',['Der Erreger stirbt aus','Gedächtniszellen ermöglichen eine schnelle Abwehr','Antikörper bleiben für immer im Blut'],1,'Gedächtniszellen erkennen das Antigen wieder.','m3'],
+ ['Was wird bei einer passiven Impfung gespritzt?',['fertige Antikörper','abgeschwächte Erreger','Histamin'],0,'Schutz sofort, aber nur für einige Wochen.','m4'],
+ ['Warum ist Herdenschutz wichtig?',['Er ersetzt Händewaschen','Er schützt auch Menschen, die nicht geimpft werden können','Er macht Impfungen überflüssig'],1,'Hohe Impfquoten unterbrechen Infektionsketten.','m4'],
+ ['Was passiert bei der Sensibilisierung?',['Es treten starke Symptome auf','IgE-Antikörper heften sich an Mastzellen','Das Allergen wird sofort ausgeschieden'],1,'Beim ersten Kontakt gibt es noch keine Symptome.','m5'],
+ ['Warum nehmen Transplantierte Immunsuppressiva?',['um die Abstoßung des fremden Organs zu verhindern','um Allergien zu heilen','um schneller Antikörper zu bilden'],0,'Folge: höheres Infektionsrisiko.','m6']
+];
+function quizBauen(){const q=document.getElementById('quiz');q.innerHTML='';
+  fragen.forEach((f,i)=>{const d=document.createElement('div');d.className='frage';
+    d.innerHTML='<p>'+(i+1)+'. '+f[0]+'</p><div class="antw">'+f[1].map((a,k)=>'<button data-k="'+k+'">'+a+'</button>').join('')+'</div><div class="erkl"></div>';
+    const fertig=(k,still)=>{d.classList.add('beantwortet');d.querySelectorAll('button').forEach(b=>{b.disabled=true;if(+b.dataset.k===f[2])b.classList.add('richtig');});
+      const r=k===f[2];if(!r)d.querySelector('[data-k="'+k+'"]').classList.add('falsch');
+      d.querySelector('.erkl').innerHTML=(r?'✅ ':'❌ ')+f[3]+(r?'':' <a href="#'+f[4]+'">→ zurück zu Mission '+f[4].slice(1)+'</a>');
+      if(!still){zustand.quiz[i]=k;speichern();quizStand();}};
+    d.querySelectorAll('button').forEach(b=>b.onclick=()=>fertig(+b.dataset.k));
+    if(zustand.quiz[i]!==undefined)fertig(zustand.quiz[i],true);q.appendChild(d);});quizStand();}
+function quizStand(){const n=Object.keys(zustand.quiz).length;let r=0;fragen.forEach((f,i)=>{if(zustand.quiz[i]===f[2])r++;});
+  document.getElementById('quizErg').textContent=r;document.getElementById('quizBalken').style.width=(r/12*100)+'%';
+  if(n===12){document.getElementById('quizText').textContent=r>=11?'🏆 Hervorragend – du bist Immun-Expert:in!':r>=8?'👍 Gut gemacht! Schau dir die falschen Fragen noch einmal an.':'💪 Wiederhole die markierten Missionen und versuche es erneut.';xp(r*3,'quiz');}}
+
+/* ---------- Kompetenzraster ---------- */
+const kompetenzen=[
+ ['… die Entzündungszeichen erklären.','m1'],['… Barrieren und Fresszellen als unspezifische Abwehr beschreiben.','m1'],
+ ['… die humorale Immunantwort in der richtigen Reihenfolge beschreiben.','m2'],['… das Schlüssel-Schloss-Prinzip erklären und als Modell beurteilen.','m2'],
+ ['… humorale und zelluläre Abwehr vergleichen.','m3'],['… die Rolle der Gedächtniszellen erklären.','m3'],
+ ['… ein Diagramm zur Antikörperbildung auswerten.','m4'],['… aktive und passive Impfung unterscheiden.','m4'],['… Herdenschutz erklären und Gesundheitsinfos aus Netz/KI prüfen.','m4'],
+ ['… den Ablauf einer Allergie erklären und von Unverträglichkeiten abgrenzen.','m5'],
+ ['… die Abstoßung von Spenderorganen erklären.','m6'],['… Regelungen zur Organspende begründet beurteilen.','m6']
+];
+function rasterBauen(){const t=document.getElementById('kraster');t.innerHTML='<tr><th>Ich kann …</th><th>Selbsteinschätzung</th></tr>';
+  kompetenzen.forEach((k,i)=>{const tr=document.createElement('tr');tr.innerHTML='<td>'+k[0]+'</td><td><div class="wahl">'+['😀','🙂','😕'].map(e=>'<button aria-label="'+e+'">'+e+'</button>').join('')+'</div><span class="hinw"></span></td>';
+    const hin=tr.querySelector('.hinw');
+    tr.querySelectorAll('button').forEach(b=>{if(zustand.raster[i]===b.textContent)b.classList.add('an');
+      b.onclick=()=>{tr.querySelectorAll('button').forEach(x=>x.classList.remove('an'));b.classList.add('an');zustand.raster[i]=b.textContent;speichern();setH();};});
+    function setH(){hin.innerHTML=zustand.raster[i]==='😕'?' <a href="#'+k[1]+'">→ Mission '+k[1].slice(1)+'</a>':'';}setH();t.appendChild(tr);});}
+
+/* ---------- Abzeichen ---------- */
+const abz=[['m1','🔥','Erste Linie'],['m2','🔑','Schlüssel-Profi'],['m3','🧠','Zellteam'],['m4','💉','Impf-Profi'],['m5','🌼','Pollen-Profi'],['m6','⚖️','Ethikrat'],['m7','🏆','Immun-Expert:in']];
+function abzeichenZeigen(){const el=document.getElementById('abzeichen');if(!el)return;el.innerHTML=abz.map(a=>'<div class="'+(zustand.fertig[a[0]]?'hat':'')+'"><span>'+a[1]+'</span>'+a[2]+'</div>').join('');}
+
+/* ---------- Glossar ---------- */
+const glossar=[
+ ['Allergen','harmloser Stoff (z. B. Pollen), der bei Allergikern eine Immunreaktion auslöst'],
+ ['Allergie','überschießende Immunreaktion gegen harmlose Stoffe'],
+ ['Antigen','Merkmal auf der Oberfläche von Erregern oder Zellen, das vom Immunsystem erkannt wird'],
+ ['Antikörper','Y-förmiges Eiweiß, das spezifisch an ein Antigen bindet; von Plasmazellen gebildet'],
+ ['B-Zelle','Lymphozyt mit Rezeptor für ein bestimmtes Antigen; wird zur Plasmazelle oder Gedächtniszelle'],
+ ['Entzündung','Abwehrreaktion des Gewebes mit Rötung, Wärme, Schwellung, Schmerz'],
+ ['Gedächtniszelle','langlebige Zelle, die ein Antigen wiedererkennt und eine schnelle Abwehr startet'],
+ ['Herdenschutz','Schutz Ungeimpfter, weil genug andere immun sind und Infektionsketten abbrechen'],
+ ['Histamin','Botenstoff aus Mastzellen; erweitert Gefäße, macht sie durchlässig, verursacht Juckreiz'],
+ ['humorale Immunantwort','spezifische Abwehr durch Antikörper in Blut und Gewebeflüssigkeit'],
+ ['IgE','Antikörperklasse, die bei Allergien an Mastzellen bindet'],
+ ['Immunisierung, aktiv','Impfung mit abgeschwächten/abgetöteten Erregern oder Antigenen; Körper bildet Gedächtniszellen'],
+ ['Immunisierung, passiv','Gabe fertiger Antikörper (Heilimpfung); sofortiger, kurzer Schutz'],
+ ['Immunsuppressiva','Medikamente, die das Immunsystem dämpfen, z. B. nach Transplantationen'],
+ ['Killer-T-Zelle','zerstört virusinfizierte oder fremde Körperzellen (zelluläre Immunantwort)'],
+ ['Lactoseintoleranz','Unverträglichkeit von Milchzucker durch Mangel am Enzym Lactase – keine Allergie'],
+ ['Makrophage','Fresszelle; nimmt Erreger auf (Phagocytose) und präsentiert Antigene'],
+ ['Mastzelle','Gewebezelle, die bei Entzündungen und Allergien Histamin freisetzt'],
+ ['Phagocytose','Aufnahme und Verdauung von Erregern durch Fresszellen'],
+ ['Plasmazelle','aus B-Zelle entstandene „Antikörper-Fabrik“'],
+ ['Sensibilisierung','erster Kontakt mit einem Allergen: Bildung von IgE, noch ohne Symptome'],
+ ['spezifische Abwehr','gezielt gegen ein bestimmtes Antigen gerichtet; mit Gedächtnis'],
+ ['T-Helferzelle','erkennt präsentierte Antigene und aktiviert B-Zellen und Killer-T-Zellen'],
+ ['Transplantation','Übertragung von Organen oder Gewebe von einem Spender auf einen Empfänger'],
+ ['unspezifische Abwehr','angeborene Abwehr, wirkt sofort gegen alle Erreger gleich'],
+ ['Widerspruchslösung','Regel, nach der jeder als Organspender gilt, der nicht widersprochen hat'],
+ ['zelluläre Immunantwort','spezifische Abwehr durch Killer-T-Zellen gegen infizierte Zellen']
+];
+function glossarBauen(){const l=document.getElementById('glossarListe');const s=document.getElementById('glossarSuche');
+  const male=()=>{const q=s.value.toLowerCase();l.innerHTML=glossar.filter(g=>(g[0]+g[1]).toLowerCase().includes(q)).map(g=>'<div><b>'+g[0]+'</b><br>'+g[1]+'</div>').join('');};s.oninput=male;male();}
+
+/* ---------- Start ---------- */
+aussagenListe('checkinListe','checkin');aussagenListe('checkoutListe','checkout');
+stepper('stEntz',['Gesunde Haut: Oberhaut und Lederhaut mit Blutgefäß. Die Haut ist eine <b>Barriere</b>.','Ein <b>Splitter</b> durchbricht die Barriere.','<b>Bakterien</b> gelangen in das Gewebe und vermehren sich.','<b>Mastzellen</b> schütten den Botenstoff <b>Histamin</b> aus.','Histamin <b>erweitert die Blutgefäße</b> (→ Rötung, Wärme) und macht sie durchlässig: <b>Flüssigkeit tritt aus</b> (→ Schwellung, Druck auf Nerven → Schmerz).','<b>Fresszellen</b> wandern aus dem Blut ins Gewebe und nehmen die Bakterien auf: <b>Phagocytose</b>.','Die Bakterien sind beseitigt. Abgestorbene Fresszellen, Erreger und Gewebereste bilden <b>Eiter</b>.']);
+stepper('stHum',['Ein <b>Virus</b> dringt ein. Auf seiner Oberfläche trägt es typische <b>Antigene</b> (▲).','Eine <b>Fresszelle</b> nimmt das Virus auf und <b>präsentiert</b> Antigen-Bruchstücke auf ihrer Oberfläche.','Eine <b>T-Helferzelle</b> mit passendem Rezeptor erkennt das Antigen und wird aktiviert. Sie schüttet Botenstoffe aus.','Unter vielen B-Zellen wird nur die mit dem <b>passenden Rezeptor</b> aktiviert (Schlüssel-Schloss).','Die B-Zelle teilt sich vielfach: Es entstehen <b>Plasmazellen</b> und <b>Gedächtniszellen</b>.','Plasmazellen bilden Millionen <b>Antikörper</b>, alle passend zu genau diesem Antigen.','Antikörper binden an die Antigene: Die Viren <b>verklumpen</b> (Antigen-Antikörper-Komplex) und können keine Zellen mehr befallen.','<b>Fresszellen</b> beseitigen die verklumpten Komplexe.']);
+const zb=stepper('stZell',['Eine gesunde <b>Körperzelle</b>.','<b>Viren</b> haben die Zelle befallen und vermehren sich darin – hier kommen Antikörper nicht hin. Die Zelle zeigt außen <b>Virus-Antigene</b> (▲).','Eine <b>T-Helferzelle</b> aktiviert eine passende <b>Killer-T-Zelle</b>.','Die Killer-T-Zelle <b>dockt an</b> das Virus-Antigen an und gibt <b>Zellgifte</b> ab.','Die infizierte Zelle <b>zerfällt</b> mitsamt den Viren; Fresszellen räumen auf.','Es bleiben <b>Gedächtniszellen</b> zurück – beim nächsten Mal geht alles viel schneller.']);
+zb._onstep=i=>{document.getElementById('killer').style.transform=i>=3?'translateX(60px)':'none';};zb._onstep(0);
+stepper('stAll',['Mia atmet im ersten Jahr <b>Birkenpollen</b> ein – eigentlich harmlos.','Ihr Immunsystem stuft die Pollen-Eiweiße fälschlich als gefährlich ein: B-Zellen werden zu Plasmazellen und bilden <b>IgE-Antikörper</b>.','Die IgE-Antikörper heften sich an <b>Mastzellen</b>. Mia merkt nichts: <b>Sensibilisierung</b>.','Im nächsten Frühling: Pollen binden an die IgE-Antikörper auf den Mastzellen und <b>verbinden</b> sie.','Das ist das Signal: Die Mastzellen schütten schlagartig <b>Histamin</b> aus.','Histamin löst eine Entzündung in Nase und Augen aus: <b>Niesen, Juckreiz, Schwellung, Schleim</b> – die allergische Reaktion.']);
+sortSpiel('barrierenItems',['Haut','Schleimhaut','Magensäure','Tränen/Speichel'],[
+ ['Hornschicht und Säureschutzmantel halten Erreger ab','Haut','Die Haut ist eine trockene, saure Schutzschicht.'],
+ ['Flimmerhärchen transportieren Schleim mit Erregern zum Rachen','Schleimhaut','Wie ein Förderband in den Atemwegen.'],
+ ['Sehr saurer Saft tötet verschluckte Erreger ab','Magensäure','Der pH-Wert liegt bei etwa 1–2.'],
+ ['Enthalten ein Enzym (Lysozym), das Bakterienwände angreift','Tränen/Speichel','Lysozym zerstört Zellwände vieler Bakterien.']],'barrieren');
+sortSpiel('allergieItems',['Allergie','Unverträglichkeit','Infektion'],[
+ ['Nach Milch bekommt Tom Bauchweh, weil ihm das Enzym Lactase fehlt.','Unverträglichkeit','Kein Immunsystem beteiligt – Lactoseintoleranz.'],
+ ['Nach Erdnüssen schwellen Saras Lippen an, sie bekommt Atemnot.','Allergie','Immunreaktion gegen Erdnuss-Eiweiß – kann lebensgefährlich sein!'],
+ ['Ben hat Fieber und Husten, mehrere Mitschüler auch.','Infektion','Ansteckende Erreger – mehrere Menschen betroffen.'],
+ ['Jede Frühlingssaison tränen Mias Augen in der Nähe von Birken.','Allergie','Heuschnupfen: Pollen als Allergen.'],
+ ['Kemal reagiert auf Milcheiweiß mit Hautausschlag – sein Körper bildet IgE.','Allergie','Milchallergie: Immunreaktion gegen Milcheiweiß (nicht Milchzucker!).']],'allergiesort');
+sortSpiel('argItems',['Pro','Contra'],[
+ ['Mehr Organe könnten Menschen auf der Warteliste retten.','Pro','Viele Länder mit Widerspruchslösung haben höhere Spenderzahlen – allerdings spielt auch die Organisation in Kliniken eine große Rolle.'],
+ ['Schweigen ist keine Zustimmung – der Körper gehört dem Menschen selbst.','Contra','Argument der Selbstbestimmung (Grundrecht auf körperliche Unversehrtheit).'],
+ ['Jeder muss sich nur einmal mit der Frage beschäftigen und kann leicht Nein sagen.','Pro','Befürworter betonen: Die Spende bleibt freiwillig.'],
+ ['Menschen, die sich nicht informieren (können), werden ungefragt zu Spendern.','Contra','Kritiker sprechen von fehlender „informierter Zustimmung“.'],
+ ['Angehörige werden in einer schweren Situation entlastet.','Pro','Sie müssen nicht mehr allein über den mutmaßlichen Willen entscheiden.'],
+ ['Die Regel allein behebt den Mangel nicht, wenn Kliniken Spender nicht erkennen.','Contra','Auch die Bundesärztekammer betont, dass zusätzlich Strukturen verbessert werden müssen.']],'argumente');
+schlossNeu();ordnenStart();steckbriefe();diagramm();simulation();positionen();quizBauen();rasterBauen();glossarBauen();xpZeigen();zeige();
+</script>
+</body>
+</html>
